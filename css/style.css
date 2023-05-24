@@ -1,0 +1,127 @@
+/* reset - сброс браузерных стилей: */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* можно ли задать это всё сразу элементу с классом .container? */
+body {
+  padding: 50px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;  /* обычно это значение браузера по умолчанию: */
+  letter-spacing: 2px;
+  color: #777;
+  /* background-color: #fff;    <- нужно ли??? */
+}
+
+.container {
+  background-color: #F7F7F7;
+}
+
+.header {
+  position: relative;
+
+  height: 750px;
+
+  /**************************************************
+        сокращенная запись свойства background: 
+  ***************************************************
+              url("")[image]
+              top left[position] / 50px 50px[size]
+              no-repeat[repeat]
+              scroll[attachment];
+  **************************************************/
+  background:   linear-gradient(90deg, rgba(186, 133, 84, 0.7) 0.03%, rgba(1, 1, 1, 0.7) 99.94%), url("../images/header-background.jpg") center center / cover no-repeat;
+
+  /* обрезка снизу -> https://bennettfeely.com/clippy/) */
+  clip-path: polygon(0 0, 100% 0, 100% 99%, 0 82%);
+}
+
+.header__logo {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 56px;
+  height: 70px;
+}
+
+.header__box {
+  /* выравнивание блока по центру, в т.ч. гибкость блока: */
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  /* видео_6, ~ 21мин 30сек */
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.title-first {
+  /* font-family: "Roboto", sans-serif;  <- по идее наследуется от body */
+  color: #fff;
+}
+
+.title-first__primary {
+  display: block;  /* <- т.к. span - строчный элемент */
+  margin-bottom: 10px;
+  font-weight: 800;
+  font-size: 50px;
+  text-transform: uppercase;
+  line-height: 60px;
+  letter-spacing: 10px;
+  /* добавление анимации: */
+  animation-name: left_to_right;
+  animation-duration: 1.7s;
+  animation-delay: 1s;
+  animation-timing-function: ease;
+}
+
+.title-first__secondary {
+  display: block;  /* <- т.к. span - строчный элемент */
+  font-weight: 100;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: 5px;
+  /* добавление анимации: */
+  animation-name: right_to_left;
+  animation-duration: 1.7s;
+  animation-delay: 1s;
+  animation-timing-function: ease;
+}
+
+/* анимация: */
+@keyframes left_to_right {
+  /* определяем ключевые точки (диапазоны) - например, 0%, 80% и 100%: */
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+/* анимация: */
+@keyframes right_to_left {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
