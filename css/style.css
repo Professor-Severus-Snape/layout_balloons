@@ -1,17 +1,24 @@
 /* reset - сброс браузерных стилей: */
-* {
+*, ::before, ::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  /* зададим размер шрифта в 10px вместо стандартных 16px, чтобы легче было считать rem: */
+  /* font-size: 10px; */
+  /* но, чтобы можно было увеличивать шрифт на странице слабовидящим, переведём в проценты: */
+  font-size: 62.5%;  /* (10px / 16px * 100% = 62.5%) */
+}
+
 /* можно ли задать это всё сразу элементу с классом .container? */
 body {
-  padding: 50px;
+  padding: 5rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 16px;  /* обычно это значение браузера по умолчанию: */
-  letter-spacing: 2px;
+  font-size: 1.6rem;
+  letter-spacing: .2rem;
   color: #777;
   /* background-color: #fff;    <- нужно ли??? */
 }
@@ -22,8 +29,8 @@ body {
 
 .header {
   position: relative;
-
-  height: 750px;
+  /* height: 91vh; */
+  height: 75rem;
 
   /**************************************************
         сокращенная запись свойства background: 
@@ -41,17 +48,19 @@ body {
 
 .header__logo {
   position: absolute;
-  top: 50px;
-  left: 50px;
-  width: 56px;
-  height: 70px;
+  top: 5rem;
+  left: 5rem;
+  width: 5.6rem;
+  height: 7rem;
 }
 
 .header__box {
   /* выравнивание блока по центру, в т.ч. гибкость блока: */
   position: absolute;
-  top: 40%;
-  left: 50%;
+  /* top: 40%; */
+  /* left: 50%; */
+  top: 46.8%;
+  left: 50.2%;
   /* видео_6, ~ 21мин 30сек */
   transform: translate(-50%, -50%);
   width: 100%;
@@ -59,36 +68,128 @@ body {
 }
 
 .title-first {
-  /* font-family: "Roboto", sans-serif;  <- по идее наследуется от body */
   color: #fff;
 }
 
 .title-first__primary {
   display: block;  /* <- т.к. span - строчный элемент */
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   font-weight: 800;
-  font-size: 50px;
+  font-size: 5rem;
   text-transform: uppercase;
-  line-height: 60px;
-  letter-spacing: 10px;
+  line-height: 6rem;
+  /* letter-spacing: 10px; */
+  letter-spacing: 1.2rem;
   /* добавление анимации: */
   animation-name: left_to_right;
   animation-duration: 1.7s;
-  animation-delay: 1s;
   animation-timing-function: ease;
+  animation-delay: 1s;
+  /* нормализует анимацию: */
+  backface-visibility: hidden;
 }
 
 .title-first__secondary {
   display: block;  /* <- т.к. span - строчный элемент */
+  /* margin-bottom: 65px; */
+  margin-bottom: 4.8rem;
   font-weight: 100;
-  font-size: 40px;
-  line-height: 48px;
-  letter-spacing: 5px;
+  /* font-size: 40px; */
+  font-size: 3.7rem;
+  line-height: 4.8rem;
+  /* letter-spacing: 5px; */
+  letter-spacing: .65rem;
   /* добавление анимации: */
   animation-name: right_to_left;
   animation-duration: 1.7s;
-  animation-delay: 1s;
   animation-timing-function: ease;
+  animation-delay: 1s;
+  /* нормализует анимацию: */
+  backface-visibility: hidden;
+}
+
+/* стилизация кнопки: */
+.button:link, .button:visited {
+  position: relative;
+  display: inline-block;
+  padding: 1.5rem 4rem;
+  border-radius: 5rem;
+  font-weight: 500;
+  font-size: 2rem;
+  letter-spacing: .5rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #777;
+  background-color: #fff; 
+  /* чтобы кнопка сдвигалась плавно: */
+  /* all - на что влияет; .3s - сколько действует (0.3сек) */
+  transition: all .3s;
+}
+
+/* при наведении на кнопку: */
+.button:hover {
+  /* смещение кнопки по оси Y: */
+  transform: translateY(-.4rem);
+  /* Тень: положение по оси X, по оси Y, радиус размытия, цвет: */
+  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.3);
+}
+
+/* изменение псевдоэлемента при наведении: */
+.button:hover::after {
+  opacity: 0;
+  transform: scaleX(1.5) scaleY(1.7);
+}
+
+/* при нажатии на кнопку: */
+.button:active {
+  /* смещение кнопки по оси Y: */
+  transform: translateY(-.2rem);
+  /* тень: положение по оси X, по оси Y, радиус размытия, цвет */
+  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.1);
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: inline-block;
+  /* чтобы размеры были как у кнопки: */
+  width: 100%;
+  height: 100%;
+  border-radius: 5rem;
+  background-color: #fff;
+  transition: all .4s;
+}
+
+/* модификатор -> только первая кнопка будет смещаться вверх: */
+.button_animated {
+/**************************************************
+      сокращенная запись свойства animation: 
+***************************************************
+animation: [name] [duration] [timing-function] [delay] 
+**************************************************/
+  animation: button_to_up .5s ease-out .7s;
+
+/* чтобы кнопка возникала постепенно снизу: */
+  animation-fill-mode: backwards;
+
+/* нормализует анимацию: */
+  backface-visibility: hidden;
+}
+
+/* анимация: */
+@keyframes button_to_up {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* анимация: */
@@ -96,16 +197,16 @@ body {
   /* определяем ключевые точки (диапазоны) - например, 0%, 80% и 100%: */
   0% {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-10rem);
   }
 
   80% {
-    transform: translateX(10px);
+    transform: translateX(1rem);
   }
 
   100% {
     opacity: 1;
-    transform: translateX(0px);
+    transform: translateX(0);
   }
 }
 
@@ -113,15 +214,15 @@ body {
 @keyframes right_to_left {
   0% {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(10rem);
   }
 
   80% {
-    transform: translateX(-10px);
+    transform: translateX(-1rem);
   }
 
   100% {
     opacity: 1;
-    transform: translateX(0px);
+    transform: translateX(0);
   }
 }
