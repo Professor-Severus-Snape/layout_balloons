@@ -1,3 +1,16 @@
+/* объявление глобальной переменной: */
+/* :root { */
+  /* --main-color: #777; */
+  /* --gradient-1: ; */
+  /* --gradient-2: ; */
+  /* --shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.3); */
+/* } */
+
+/* использование переменной: */
+/* body {
+  background-color: var(--main-color);
+} */
+
 /* reset - сброс браузерных стилей: */
 *, ::before, ::after {
   margin: 0;
@@ -40,7 +53,7 @@ body {
               no-repeat[repeat]
               scroll[attachment];
   **************************************************/
-  background:   linear-gradient(90deg, rgba(186, 133, 84, 0.7) 0.03%, rgba(1, 1, 1, 0.7) 99.94%), url("../images/header-background.jpg") center center / cover no-repeat;
+  background: linear-gradient(90deg, rgba(186, 133, 84, 0.7) 0.03%, rgba(1, 1, 1, 0.7) 99.94%), url("../images/header-background.jpg") center center / cover no-repeat;
 
   /* обрезка снизу -> https://bennettfeely.com/clippy/) */
   clip-path: polygon(0 0, 100% 0, 100% 99%, 0 82%);
@@ -90,7 +103,7 @@ body {
 }
 
 .title-first__secondary {
-  display: block;  /* <- т.к. span - строчный элемент */
+  display: block;
   /* margin-bottom: 65px; */
   margin-bottom: 4.8rem;
   font-weight: 100;
@@ -130,8 +143,10 @@ body {
 .button:hover {
   /* смещение кнопки по оси Y: */
   transform: translateY(-.4rem);
-  /* Тень: положение по оси X, по оси Y, радиус размытия, цвет: */
+  /* тень: положение по оси 0X, по оси 0Y, радиус размытия, цвет: */
   box-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.3);
+  /* использование переменной: */
+  /* box-shadow: var(--shadow); */
 }
 
 /* изменение псевдоэлемента при наведении: */
@@ -146,6 +161,8 @@ body {
   transform: translateY(-.2rem);
   /* тень: положение по оси X, по оси Y, радиус размытия, цвет */
   box-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.1);
+  /* использование переменной: */
+  /* box-shadow: var(--shadow); */
 }
 
 .button::after {
@@ -179,14 +196,15 @@ animation: [name] [duration] [timing-function] [delay]
   backface-visibility: hidden;
 }
 
+/* где расположить keyframes - в начале / в конце файла .css или где угодно ???  */
 /* анимация: */
 @keyframes button_to_up {
-  0% {
+  from {
     opacity: 0;
     transform: translateY(5rem);
   }
 
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
@@ -195,7 +213,7 @@ animation: [name] [duration] [timing-function] [delay]
 /* анимация: */
 @keyframes left_to_right {
   /* определяем ключевые точки (диапазоны) - например, 0%, 80% и 100%: */
-  0% {
+  from {
     opacity: 0;
     transform: translateX(-10rem);
   }
@@ -204,7 +222,7 @@ animation: [name] [duration] [timing-function] [delay]
     transform: translateX(1rem);
   }
 
-  100% {
+  to {
     opacity: 1;
     transform: translateX(0);
   }
@@ -212,7 +230,7 @@ animation: [name] [duration] [timing-function] [delay]
 
 /* анимация: */
 @keyframes right_to_left {
-  0% {
+  from {
     opacity: 0;
     transform: translateX(10rem);
   }
@@ -221,8 +239,67 @@ animation: [name] [duration] [timing-function] [delay]
     transform: translateX(-1rem);
   }
 
-  100% {
+  to {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+/*********************************** my-grid ***********************************/
+.row {
+  max-width: 114rem;  /* 1440px - 2 * 150px = 1140px */
+  margin: 0 auto;
+
+  background: rgb(52, 190, 225);  /* убрать!!! */
+}
+
+.row:not(:last-child) {
+  margin-bottom: 8rem;
+}
+
+/* clearfix для float: */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column-1-of-2 {
+  width: calc((100% - 6rem) / 2);  /* 6rem - горизонтальный margin */
+}
+
+.column-1-of-3 {
+  width: calc((100% - 2 * 6rem) / 3);
+}
+
+.column-2-of-3 {
+  width: calc( 2 * ((100% - 2 * 6rem) / 3) + 6rem);
+}
+
+.column-1-of-4 {
+  width: calc((100% - 3 * 6rem) / 4);
+}
+
+.column-2-of-4 {
+  width: calc( 2 * ((100% - 3 * 6rem) / 4) + 6rem);
+}
+
+.column-3-of-4 {
+  width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem);
+}
+
+/* принцип DRY: */
+[class^="column-"] {
+/*
+  ^ - начало имени класса 
+  $ - окончание имени класса
+  * - любое место имени класса
+*/
+  float: left;
+  background: rgb(52, 225, 52);  /* убрать!!! */
+}
+
+/* принцип DRY: */
+[class^="column-"]:not(:last-child) {
+  margin-right: 6rem;
 }
