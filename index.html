@@ -21,53 +21,78 @@
         <img class="header__logo" src="svg/logo.svg" alt="Логотип воздушный шар">
         <div class="header__box">
           <h1 class="title-first">
-            <span class="title-first__primary">туры на воздушном шаре</span>
-            <span class="title-first__secondary">незабываемое приключение ждет вас</span>
+            <span class="title-first__primary">Туры на воздушном шаре</span>
+            <span class="title-first__secondary">Незабываемое приключение ждет вас</span>
           </h1>
           <!-- как лучше - через <a> или <button>??? -->
-          <a class="button button_animated" href="#">наш каталог</a>
+          <a class="button button_animated" href="#">Наш каталог</a>
           <!-- <button class="button button_animated" type="button">наш каталог</button> -->
         </div>
       </header>
 
+      <main>
+
+        <section class="section-about">
+          <!-- создаем заголовок <h2> отдельным БЭМ-блоком (т.к. он будет переиспользоваться ещё несколько раз) -->
+          <h2 class="title-second margin-bottom-80px">Невероятное ощущение свободы</h2>
+
+
+          <div class="row">
+
+            <div class="column-1-of-2">
+              <!-- заголовок <h3> делаем отдельным БЭМ-блоком -->
+              <h3 class="title-third margin-bottom-10px">Позвольте себе приключение</h3>
+              <!-- параграф <p> делаем отдельным БЭМ-блоком -->
+              <p class="paragraph margin-bottom-30px">Задача организации, в особенности же дальнейшее развитие различных форм деятельности влечет за собой процесс внедрениям и модернизации соответствующий условий активизации. Таким образом начало повседневной работы по формированию позиции влечет.</p>
+
+              <h3 class="title-third margin-bottom-10px">Вверх на 6000 метров над уровнем моря</h3>
+              <p class="paragraph margin-bottom-30px">Задача организации, в особенности же дальнейшее развитие различных форм деятельности влечет за собой процесс внедрениям и модернизации соответствующий условий активизации. Таким образом начало повседневной работы по формированию позиции влечет.</p>
+
+              <!-- кнопку <a> делаем отдельным БЭМ-блоком -->
+              <!-- спецсимволы: https://css-tricks.com/snippets/html/glyphs/ -->
+              <a class="button-text" href="#">Узнать больше &rarr;</a>
+
+            </div>
+
+
+            <div class="column-1-of-2">Блок с фотографиями</div>
+          </div>
+
+
+        </section>
+      </main>
+
       <!-- создадим систему сеток на float: -->
-      <section class="my-grid">
-
+      <!-- <section class="my-grid">
         <div class="row">
             <div class="column-1-of-2">column-1-of-2</div>
             <div class="column-1-of-2">column-1-of-2</div>
         </div>
-
         <div class="row">
             <div class="column-1-of-3">column-1-of-3</div>
             <div class="column-1-of-3">column-1-of-3</div>
             <div class="column-1-of-3">column-1-of-3</div>
         </div>
-
         <div class="row">
             <div class="column-1-of-3">column-1-of-3</div>
             <div class="column-2-of-3">column-2-of-3</div>
         </div>
-
         <div class="row">
             <div class="column-1-of-4">column-1-of-4</div>
             <div class="column-1-of-4">column-1-of-4</div>
             <div class="column-1-of-4">column-1-of-4</div>
             <div class="column-1-of-4">column-1-of-4</div>
         </div>
-
         <div class="row">
             <div class="column-1-of-4">column-1-of-4</div>
             <div class="column-1-of-4">column-1-of-4</div>
             <div class="column-2-of-4">column-2-of-4</div>
         </div>
-
         <div class="row">
             <div class="column-1-of-4">column-1-of-4</div>
             <div class="column-3-of-4">column-3-of-4</div>
         </div>
-        
-      </section>
+      </section> -->
 
     </div>
   </body>
