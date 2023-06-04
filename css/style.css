@@ -3,7 +3,7 @@
   /* --main-color: #777; */
   /* --gradient-1: ; */
   /* --gradient-2: ; */
-  /* --shadow: 0 .4rem .4rem rgba(0, 0, 0, .3); */
+  /* --shadow: 0 .4rem .4rem rgba(0, 0, 0, .25); */
 /* } */
 
 /* использование переменной: */
@@ -144,7 +144,7 @@ body {
   /* смещение кнопки по оси Y: */
   transform: translateY(-.4rem);
   /* тень: положение по оси 0X, по оси 0Y, радиус размытия, цвет: */
-  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .3);
+  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
   /* использование переменной: */
   /* box-shadow: var(--shadow); */
 }
@@ -333,6 +333,7 @@ animation: [name] [duration] [timing-function] [delay]
 /* принцип DRY: */
 [class^="column-"]:not(:last-child) {
   margin-right: 6rem;
+  /* margin-right: 5.4rem; */
 }
 
 .title-third {
@@ -342,6 +343,7 @@ animation: [name] [duration] [timing-function] [delay]
   text-transform: uppercase;
 }
 
+/* утилита: */
 .margin-bottom-10px {
   margin-bottom: 1rem;
 }
@@ -355,6 +357,7 @@ animation: [name] [duration] [timing-function] [delay]
   /* letter-spacing: .18rem; */  /* чтобы текст переносился по макету */
 }
 
+/* утилита: */
 .margin-bottom-38px {
   margin-bottom: 3.8rem;
 }
@@ -381,7 +384,7 @@ animation: [name] [duration] [timing-function] [delay]
 .button-text:hover {
   color:rgba(255, 255, 255, 1);
   background-color: rgba(195, 149, 106, 1);
-  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .3);
+  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
   transform: translateY(-.2rem);  /* слегка приподнимается кнопка */
 }
 
@@ -395,14 +398,14 @@ animation: [name] [duration] [timing-function] [delay]
 }
 
 /* при наведении на композицию, все элементы, кроме выбранного, уменьшаются */
-.composition:hover .composition__photo:not(:hover){
+.composition:hover .composition__photo:not(:hover) {
   transform: scale(.95);
 }
 
 .composition__photo {
   position: absolute;
   width: 59%;
-  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .3);
+  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
   border-radius: .5rem;
   transition: all .2s;
 }
@@ -427,6 +430,68 @@ animation: [name] [duration] [timing-function] [delay]
 .composition__photo_3 {
   top: 16rem;
   left: 2.4rem;
+}
+
+.section-adventure {
+  /* 1-ый вариант (лучше, имхо): */
+  padding: 27rem 0;
+
+  /* 2-ой вариант: */
+  /* padding: 21.5rem 0; */
+
+  background: linear-gradient(91.4deg, rgba(186, 133, 84, .7) 16.34%, rgba(0, 0, 0, .7) 98.8%), url("../images/adventure-background.jpg") center center / cover no-repeat;
+
+  /* обрезка фонового изображения: */
+
+  /* 1-ый вариант (лучше, имхо, но тоже не идеально): */
+  clip-path: polygon(0 6%, 100% 20.5%, 100% 86.5%, 0 73.5%);
+
+  /* 2-ой вариант: */
+  /* transform: skewY(7deg);  */
+}
+
+  /* 2-ой вариант: */
+/* .section-adventure > * {
+  transform: skewY(-7deg);
+} */
+
+.column-1-of-4 {
+  width: calc((100% - 3 * 6rem) / 4);
+  /* width: calc((100% - 3 * 5.4rem) / 4); */
+}
+
+.adventure-card {
+  padding: 2.5rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: .5rem;
+  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
+  transition: all .2s;
+}
+
+.adventure-card:hover {
+  transform: translateY(-1.5rem) scale(1.05);
+}
+
+.adventure-card__icon {
+  display: inline-block;
+  font-size: 6rem;
+
+  /* зададим градиент для иконочных шрифтов: */
+  background: linear-gradient(90deg, rgba(195, 149, 106, 1) 3%, rgba(161, 79, 3, 1) 100%);
+
+  -webkit-background-clip: text; 
+  -moz-background-clip: text;
+  -o-background-clip: text;
+  -ms-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+/* утилита: */
+.margin-bottom-25px {
+  margin-bottom: 2.5rem;
 }
 
 /*********************************** my-grid ***********************************/

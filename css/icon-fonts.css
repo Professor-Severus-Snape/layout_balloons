@@ -1,0 +1,47 @@
+/*
+  создание иконочных шрифтов: 
+  https://icomoon.io (app -> import icons (.svg) -> generate font -> download zip)
+*/
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?qe0kvj');
+  src:  url('../fonts/icomoon.eot?qe0kvj#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?qe0kvj') format('truetype'),
+    url('../fonts/icomoon.woff?qe0kvj') format('woff'),
+    url('../fonts/icomoon.svg?qe0kvj#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  /* speak: never; */
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-vector-1::before {
+  content: "\e900";
+}
+
+.icon-vector-2::before {
+  content: "\e901";
+}
+
+.icon-vector-3::before {
+  content: "\e902";
+}
+
+.icon-vector-4::before {
+  content: "\e903";
+}
