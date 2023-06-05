@@ -33,8 +33,10 @@
 
       <main>
         <section class="section-about">
+
           <!-- создаем заголовок <h2> отдельным БЭМ-блоком (т.к. он будет переиспользоваться ещё несколько раз) -->
           <h2 class="title-second margin-bottom-85px">Невероятное ощущение свободы</h2>
+
           <div class="row">
             <div class="column-1-of-2">
               <!-- заголовок <h3> делаем отдельным БЭМ-блоком -->
@@ -94,7 +96,52 @@
               </div>
             </div>
 
-        </div>
+          </div>
+        </section>
+
+        <section class="section-tour">
+          <h2 class="title-second margin-bottom-85px">наиболее популярные туры</h2>
+
+          <div class="row">
+
+            <div class="column-1-of-3">
+
+              <!-- сделаем карточку независимым БЭМ-блоком: -->
+              <div class="card-tour">
+
+                <div class="card-tour__side card-tour__side_front">
+
+                  <div class="card-tour__img margin-bottom-50px"></div>
+
+                  <h4 class="card-tour__title">
+                    <span class="card-tour__span card-tour__span_1">групповые</span>
+                    <br>
+                    <span class="card-tour__span card-tour__span_2">туры</span>
+                  </h4>
+
+                  <div class="card-tour__description">
+                    <ul class="card-tour__list">
+                      <li class="card-tour__item">Группы от 6 человек</li>
+                      <li class="card-tour__item">Продолжительность 2 час</li>
+                      <li class="card-tour__item">В группе 1 гид</li>
+                      <li class="card-tour__item">Дальность полета 6км</li>
+                      <li class="card-tour__item">Бесплатные сувениры</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="card-tour__side card-tour__side_back">back side</div>
+                
+              </div>
+
+            </div>
+
+            <div class="column-1-of-3">column-1-of-3</div>
+
+            <div class="column-1-of-3">column-1-of-3</div>
+
+          </div>
+
         </section>
       </main>
 
