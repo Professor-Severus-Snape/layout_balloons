@@ -1,15 +1,12 @@
-/* объявление глобальной переменной: */
-/* :root { */
-  /* --main-color: #777; */
-  /* --gradient-1: ; */
-  /* --gradient-2: ; */
-  /* --shadow: 0 .4rem .4rem rgba(0, 0, 0, .25); */
-/* } */
-
-/* использование переменной: */
-/* body {
-  background-color: var(--main-color);
-} */
+/* объявление глобальных переменных: */
+:root { 
+  --color-white: #fff;
+  --color-text: #777;
+  --color-light: #BA8554;
+  --color-dark: #A14F03;
+  /* тень: положение по оси X, по оси Y, радиус размытия, цвет: */
+  --main-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
+}
 
 /* reset - сброс браузерных стилей: */
 *, ::before, ::after {
@@ -19,42 +16,117 @@
 }
 
 html {
-  /* зададим размер шрифта в 10px вместо стандартных 16px, чтобы легче было считать rem: */
-  /* font-size: 10px; */
-  /* но, чтобы можно было увеличивать шрифт на странице слабовидящим, переведём в проценты: */
+  /* чтобы легче было считать rem -> font-size = 10px. Переведём в %, чтобы можно было увеличивать шрифт. */
   font-size: 62.5%;  /* (10px / 16px * 100% = 62.5%) */
 }
 
-/* можно ли задать это всё сразу элементу с классом .container? */
 body {
   padding: 5rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 1.6rem;
   letter-spacing: .2rem;
-  color: #777;
-  /* background-color: #fff;    <- нужно ли??? */
+  color: var(--color-text);
+  /* background-color: var(--color-white);    <- нужно ли??? */
 }
 
 .container {
   background-color: #F7F7F7;
 }
 
+/* ============================== утилиты: ============================== */
+
+.margin-bottom-10px {
+  margin-bottom: 1rem;
+}
+
+.margin-bottom-25px {
+  margin-bottom: 2.5rem;
+}
+
+.margin-bottom-38px {
+  margin-bottom: 3.8rem;
+}
+
+.margin-bottom-50px {
+  margin-bottom: 5rem;
+}
+
+.margin-bottom-85px {
+  margin-bottom: 8.5rem;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+/* ============================== разметка float: ============================== */
+
+.row {
+  max-width: 114rem;  /* 1440px - 2 * 150px = 1140px */
+  margin: 0 auto;
+}
+
+.row:not(:last-child) {
+  margin-bottom: 8rem;
+}
+
+/* "clearfix" для float: */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* | ^ - начало имени класса | $ - окончание имени класса | * - любое место имени класса | */
+[class^="column-"] {
+  float: left;
+}
+
+[class^="column-"]:not(:last-child) {
+  margin-right: 6rem;
+  /* margin-right: 5.4rem; */
+}
+
+.column-1-of-2 {
+  width: calc((100% - 6rem) / 2);  /* 6rem - горизонтальный margin */
+}
+
+.column-1-of-3 {
+  width: calc((100% - 2 * 6rem) / 3);
+}
+
+/*
+.column-2-of-3 {
+  width: calc( 2 * ((100% - 2 * 6rem) / 3) + 6rem);
+}
+*/
+
+.column-1-of-4 {
+  width: calc((100% - 3 * 6rem) / 4);
+  /* width: calc((100% - 3 * 5.4rem) / 4); */
+}
+
+/*
+.column-2-of-4 {
+  width: calc( 2 * ((100% - 3 * 6rem) / 4) + 6rem);
+}
+*/
+
+/*
+.column-3-of-4 {
+  width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem);
+}
+*/
 
 /* ============================== блок header ============================== */
+
 .header {
   position: relative;
-  /* height: 91vh; */
   height: 75rem;
 
-  /**************************************************
-        сокращенная запись свойства background: 
-  ***************************************************
-              url("")[image]
-              top left[position] / 50px 50px[size]
-              no-repeat[repeat]
-              scroll[attachment];
-  **************************************************/
+  /* сокращенная запись background:
+  url("")[image] top left[position] / 50px 50px[size] no-repeat[repeat] scroll[attachment] */
   background: linear-gradient(90deg, rgba(186, 133, 84, .7) 0.03%, rgba(1, 1, 1, .7) 99.94%), url("../images/header-background.jpg") center center / cover no-repeat;
 
   /* обрезка снизу -> https://bennettfeely.com/clippy/) */
@@ -65,6 +137,7 @@ body {
   position: absolute;
   top: 5rem;
   left: 5rem;
+
   width: 5.6rem;
   height: 7rem;
 }
@@ -72,83 +145,78 @@ body {
 .header__box {
   /* выравнивание блока по центру, в т.ч. гибкость блока: */
   position: absolute;
-  /* top: 40%; */
-  /* left: 50%; */
-  top: 46.8%;
-  left: 50.2%;
-  /* видео_6, ~ 21мин 30сек */
-  transform: translate(-50%, -50%);
+  top: 46.8%;   /* top: 40%; */
+  left: 50.2%;  /* left: 50%; */
+  transform: translate(-50%, -50%);  /* видео_6, ~ 21мин 30сек */
+
   width: 100%;
   text-align: center;
 }
 
 .title-first {
-  color: #fff;
+  color: var(--color-white);
 }
 
 .title-first__primary {
   display: block;  /* <- т.к. span - строчный элемент */
   margin-bottom: 1rem;
+
   font-weight: 800;
   font-size: 5rem;
   text-transform: uppercase;
   line-height: 6rem;
-  /* letter-spacing: 10px; */
   letter-spacing: 1.2rem;
-  /* добавление анимации: */
+
+  /* анимация: */
   animation-name: left_to_right;
   animation-duration: 1.7s;
   animation-timing-function: ease;
   animation-delay: 1s;
-  /* нормализует анимацию: */
-  backface-visibility: hidden;
+  backface-visibility: hidden;  /* нормализация анимации */
 }
 
 .title-first__secondary {
   display: block;
-  /* margin-bottom: 65px; */
   margin-bottom: 4.8rem;
+
   font-weight: 100;
-  /* font-size: 40px; */
   font-size: 3.7rem;
   line-height: 4.8rem;
-  /* letter-spacing: 5px; */
   letter-spacing: .65rem;
-  /* добавление анимации: */
+  
+  /* анимация: */
   animation-name: right_to_left;
   animation-duration: 1.7s;
   animation-timing-function: ease;
   animation-delay: 1s;
-  /* нормализует анимацию: */
   backface-visibility: hidden;
 }
 
 /* стилизация кнопки: */
 .button:link, .button:visited {
   position: relative;
+
   display: inline-block;
   padding: 1.5rem 4rem;
   border-radius: 5rem;
+
   font-weight: 500;
   font-size: 2rem;
   letter-spacing: .5rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: #777;
-  background-color: #fff; 
-  /* чтобы кнопка сдвигалась плавно: */
-  /* all - на что влияет; .3s - сколько действует (0.3сек) */
+  color: var(--color-text);
+
+  background-color: var(--color-white);
+
+  /* чтобы кнопка сдвигалась плавно (all - объект действия; .3s - время действия): */
   transition: all .3s;
 }
 
-/* при наведении на кнопку: */
+/* наведение на кнопку: */
 .button:hover {
-  /* смещение кнопки по оси Y: */
-  transform: translateY(-.4rem);
-  /* тень: положение по оси 0X, по оси 0Y, радиус размытия, цвет: */
-  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
-  /* использование переменной: */
-  /* box-shadow: var(--shadow); */
+  box-shadow: var(--main-shadow);
+  transform: translateY(-.4rem);  /* смещение кнопки по оси Y */
 }
 
 /* изменение псевдоэлемента при наведении: */
@@ -157,14 +225,10 @@ body {
   transform: scaleX(1.5) scaleY(1.7);
 }
 
-/* при нажатии на кнопку: */
+/* нажатие на кнопку: */
 .button:active {
-  /* смещение кнопки по оси Y: */
-  transform: translateY(-.2rem);
-  /* тень: положение по оси X, по оси Y, радиус размытия, цвет */
   box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .1);
-  /* использование переменной: */
-  /* box-shadow: var(--shadow); */
+  transform: translateY(-.2rem);
 }
 
 .button::after {
@@ -173,33 +237,26 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
+
   display: inline-block;
   /* чтобы размеры были как у кнопки: */
   width: 100%;
   height: 100%;
   border-radius: 5rem;
-  background-color: #fff;
+  background-color: var(--color-white);
+
   transition: all .4s;
 }
 
 /* модификатор -> только первая кнопка будет смещаться вверх: */
 .button_animated {
-/**************************************************
-      сокращенная запись свойства animation: 
-***************************************************
-animation: [name] [duration] [timing-function] [delay] 
-**************************************************/
+  /* animation: [name] [duration] [timing-function] [delay] */
   animation: button_to_up .5s ease-out .7s;
-
-/* чтобы кнопка возникала постепенно снизу: */
-  animation-fill-mode: backwards;
-
-/* нормализует анимацию: */
+  animation-fill-mode: backwards;  /* чтобы кнопка возникала постепенно снизу */
   backface-visibility: hidden;
 }
 
 /* где расположить keyframes - в начале / в конце файла .css или где угодно ???  */
-/* анимация: */
 @keyframes button_to_up {
   from {
     opacity: 0;
@@ -212,9 +269,7 @@ animation: [name] [duration] [timing-function] [delay]
   }
 }
 
-/* анимация: */
 @keyframes left_to_right {
-  /* определяем ключевые точки (диапазоны) - например, 0%, 80% и 100%: */
   from {
     opacity: 0;
     transform: translateX(-10rem);
@@ -230,7 +285,6 @@ animation: [name] [duration] [timing-function] [delay]
   }
 }
 
-/* анимация: */
 @keyframes right_to_left {
   from {
     opacity: 0;
@@ -261,9 +315,9 @@ animation: [name] [duration] [timing-function] [delay]
   letter-spacing: 1.2rem;
   text-transform: uppercase;
 
-  /*************** создание градиента текста ***************/
-  background: linear-gradient(90deg, rgba(195, 149, 106, 1) 3%, rgba(161, 79, 3, 1) 100%);
-  
+  /*************** создание градиента текста: ***************/
+  background: linear-gradient(90deg, var(--color-light) 3%, var(--color-dark) 100%);
+
   /* более развёрнутая версия записи:
   background: #c3956a;
   background: linear-gradient(90deg,#c3956a 3%, #a24f03 100%);
@@ -286,59 +340,18 @@ animation: [name] [duration] [timing-function] [delay]
   4. -ms- — Internet Explorer и старый Microsoft Edge 12–18.
   */
 
-  /* текст делаем прозрачным: */
-  color: transparent;
+  color: transparent;  /* текст делаем прозрачным: */
   /*********************************************************/
 
   transition: all .4s;
-
-  /* нормализует анимацию: */
   backface-visibility: hidden;
 }
 
 .title-second:hover {
+  text-shadow: var(--main-shadow);
+
   /* transform: skew(15deg, 2deg) scale(1.1); /* цвет - ломается!!! Почему??? */
   transform: skew(15deg, 1.5deg) scale(1.1);  /* цвет - меняется!!! Почему??? */
-  text-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
-}
-
-/* создадим утилиту, используя доп.класс, т.к. не все <h2> будут иметь такой же отступ */
-.margin-bottom-85px {
-  margin-bottom: 8.5rem;
-}
-
-.row {
-  max-width: 114rem;  /* 1440px - 2 * 150px = 1140px */
-  margin: 0 auto;
-}
-
-/* clearfix для float: */
-.row::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.column-1-of-2 {
-  width: calc((100% - 6rem) / 2);  /* 6rem - горизонтальный margin */
-}
-
-/* принцип DRY: */
-[class^="column-"] {
-  /*
-    ^ - начало имени класса 
-    $ - окончание имени класса
-    * - любое место имени класса
-  */
-  float: left;
-  /* для  лучшей визуализации: */
-  /* outline: 1px dashed purple; */
-}
-
-/* принцип DRY: */
-[class^="column-"]:not(:last-child) {
-  margin-right: 6rem;
-  /* margin-right: 5.4rem; */
 }
 
 .title-third {
@@ -346,11 +359,6 @@ animation: [name] [duration] [timing-function] [delay]
   font-size: 2rem;
   letter-spacing: .25rem;
   text-transform: uppercase;
-}
-
-/* утилита: */
-.margin-bottom-10px {
-  margin-bottom: 1rem;
 }
 
 .paragraph {
@@ -362,38 +370,32 @@ animation: [name] [duration] [timing-function] [delay]
   /* letter-spacing: .18rem; */  /* чтобы текст переносился по макету */
 }
 
-/* утилита: */
-.margin-bottom-38px {
-  margin-bottom: 3.8rem;
-}
-
 /* стилизация кнопки: */
 .button-text:link, .button-text:visited {
   display: inline-block;
   padding: 1.1rem;
-  border-bottom: .1rem solid rgba(161, 79, 3, 1);
+  border-bottom: .1rem solid var(--color-light);
 
   font-weight: 700;
   font-size: 1.6rem;
   letter-spacing: .2rem;
-  color: rgba(195, 149, 106, 1);
-  /* color:inherit; */
+  color: var(--color-light);
   text-decoration: none;
   
   transition: all .5s;
-  /* нормализует анимацию: */
   backface-visibility: hidden;
 }
 
-/* при наведении на кнопку: */
+/* наведение на кнопку: */
 .button-text:hover {
-  color:rgba(255, 255, 255, 1);
-  background-color: rgba(195, 149, 106, 1);
-  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
+  color: var(--color-white);
+  background-color: var(--color-light);
+  box-shadow: var(--main-shadow);
+
   transform: translateY(-.2rem);  /* слегка приподнимается кнопка */
 }
 
-/* при нажатии на кнопку: */
+/* нажатие на кнопку: */
 .button-text:active {
   transform: translateY(0);  /* кнопка возвращается на место */
 }
@@ -410,13 +412,15 @@ animation: [name] [duration] [timing-function] [delay]
 .composition__photo {
   position: absolute;
   width: 59%;
-  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
+
   border-radius: .5rem;
+  box-shadow: var(--main-shadow);
+
   transition: all .2s;
 }
 
 .composition__photo:hover {
-  outline: 1rem solid rgba(195, 149, 106, 1);
+  outline: 1rem solid var(--color-light);
   outline-offset: 1rem;
   transform: scale(1.1);
   z-index: 2;
@@ -440,39 +444,24 @@ animation: [name] [duration] [timing-function] [delay]
 /* ============================== section_2 ============================== */
 
 .section-adventure {
-  /* 1-ый вариант (лучше, имхо): */
   padding: 27rem 0;
-
-  /* 2-ой вариант: */
-  /* padding: 21.5rem 0; */
 
   background: linear-gradient(91.4deg, rgba(186, 133, 84, .7) 16.34%, rgba(0, 0, 0, .7) 98.8%), url("../images/adventure-background.jpg") center center / cover no-repeat;
 
   /* обрезка фонового изображения: */
-
-  /* 1-ый вариант (лучше, имхо, но тоже не идеально): */
   clip-path: polygon(0 6%, 100% 20.5%, 100% 86.5%, 0 73.5%);
-
-  /* 2-ой вариант: */
-  /* transform: skewY(7deg);  */
-}
-
-  /* 2-ой вариант: */
-/* .section-adventure > * {
-  transform: skewY(-7deg);
-} */
-
-.column-1-of-4 {
-  width: calc((100% - 3 * 6rem) / 4);
-  /* width: calc((100% - 3 * 5.4rem) / 4); */
 }
 
 .adventure-card {
   padding: 2.5rem;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  
+  background-color: var(--color-white);
+  opacity: .8;
+
   border-radius: .5rem;
-  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
+  box-shadow: var(--main-shadow);
+
   transition: all .2s;
 }
 
@@ -484,8 +473,8 @@ animation: [name] [duration] [timing-function] [delay]
   display: inline-block;
   font-size: 6rem;
 
-  /* зададим градиент для иконочных шрифтов: */
-  background: linear-gradient(90deg, rgba(195, 149, 106, 1) 3%, rgba(161, 79, 3, 1) 100%);
+  /* градиент для иконочных шрифтов: */
+  background: linear-gradient(90deg, var(--color-light) 3%, var(--color-dark) 100%);
 
   -webkit-background-clip: text; 
   -moz-background-clip: text;
@@ -496,20 +485,11 @@ animation: [name] [duration] [timing-function] [delay]
   color: transparent;
 }
 
-/* утилита: */
-.margin-bottom-25px {
-  margin-bottom: 2.5rem;
-}
-
 /* ============================== section_3 ============================== */
 
 /* .section-tour {
   padding-top: 21rem;
 } */
-
-.column-1-of-3 {
-  width: calc((100% - 2 * 6rem) / 3);
-}
 
 .card-tour {
   position: relative;
@@ -531,7 +511,10 @@ animation: [name] [duration] [timing-function] [delay]
   height: 50rem;
   width: 100%;
 
-  box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
+  border-radius: .3rem;
+  overflow: hidden;  /* <- иначе не закруглится изображение */
+  
+  box-shadow: var(--main-shadow);
 
   transition: all 1s ease-out;
   backface-visibility: hidden;
@@ -539,9 +522,21 @@ animation: [name] [duration] [timing-function] [delay]
 
 .card-tour__img {
   height: 24rem;
-  background: rgb(195, 149, 106) url("../images/card-1.jpg") center center / cover no-repeat;
+  background: var(--color-light) center center / cover no-repeat;
   background-blend-mode: hard-light;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+}
+
+.card-tour__img_1 {
+  background-image: url("../images/card-1.jpg");
+}
+
+.card-tour__img_2 {
+  background-image: url("../images/card-2.jpg");
+}
+
+.card-tour__img_3 {
+  background-image: url("../images/card-3.jpg");
 }
 
 .card-tour__title {
@@ -554,11 +549,11 @@ animation: [name] [duration] [timing-function] [delay]
   letter-spacing: .2rem;
   text-transform: uppercase;
   text-align: right;
-  color: rgb(255, 255, 255);
+  color: var(--color-white);
 }
 
 .card-tour__span {
-  background: linear-gradient(90deg,rgba(195, 149, 106, 1) 3.65%, rgba(161, 79, 3, 1) 100%);
+  background: linear-gradient(90deg, var(--color-light) 3.65%, var(--color-dark) 100%);
 }
 
 .card-tour__span_1 {
@@ -581,23 +576,25 @@ animation: [name] [duration] [timing-function] [delay]
 }
 
 .card-tour__item {
-  border-bottom: 1px solid #777;
-  /* text-decoration: underline; */
+  /* cтилизация нижнего подчеркивания: */
+  text-decoration: underline;
+  text-underline-offset: .5rem;
 
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: .19rem;
   text-align: center;
-  /* color: rgb(119, 119, 119); */
+  /* color: var(--color-text); */
 }
 
 .card-tour__item:not(:last-child) {
-  margin-bottom: 1.9rem;
+  margin-bottom: 2rem;
 }
 
 .card-tour__side_back {
+  background: linear-gradient(156.85deg, var(--color-light) 3.65%, var(--color-dark) 100%);
+
   transform: rotateY(180deg);
-  background: linear-gradient(156.85deg, rgba(195, 149, 106, 1) 3.65%, rgba(161, 79, 3, 1) 100%);
 }
 
 .card-tour:hover .card-tour__side_front {
@@ -608,70 +605,29 @@ animation: [name] [duration] [timing-function] [delay]
   transform: rotateY(0deg);
 }
 
-/* утилита: */
-.margin-bottom-50px {
-  margin-bottom: 5rem;
+.card-tour__backside-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  transform: translate(-50%, -50%);
 }
 
-/*********************************** my-grid ***********************************/
-/*
-.row {
-  max-width: 114rem;  1440px - 2 * 150px = 1140px
-  margin: 0 auto;
-}
-*/
-
-/*
-.row:not(:last-child) {
+.card-tour__text {
   margin-bottom: 8rem;
-}
-*/
+  text-align: center;
 
-/* clearfix для float: */
-/* .row::after {
-  content: "";
-  display: table;
-  clear: both;
-} */
-
-/*
-.column-1-of-2 {
-  width: calc((100% - 6rem) / 2);  6rem - горизонтальный margin 
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  color: var(--color-white);
 }
 
-.column-1-of-3 {
-  width: calc((100% - 2 * 6rem) / 3);
+.card-tour__text_1 {
+  font-weight: 300;
+  font-size: 1.6rem;
 }
 
-.column-2-of-3 {
-  width: calc( 2 * ((100% - 2 * 6rem) / 3) + 6rem);
+.card-tour__text_2 {
+  font-weight: 500;
+  font-size: 6rem;
 }
-
-.column-1-of-4 {
-  width: calc((100% - 3 * 6rem) / 4);
-}
-
-.column-2-of-4 {
-  width: calc( 2 * ((100% - 3 * 6rem) / 4) + 6rem);
-}
-
-.column-3-of-4 {
-  width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem);
-}
-*/
-
-/* принцип DRY: */
-/* [class^="column-"] { */
-/*
-  ^ - начало имени класса 
-  $ - окончание имени класса
-  * - любое место имени класса
-*/
-  /* float: left;
-  outline: 1px dashed purple;  убрать!!! 
-} */
-
-/* принцип DRY: */
-/* [class^="column-"]:not(:last-child) {
-  margin-right: 6rem;
-} */
