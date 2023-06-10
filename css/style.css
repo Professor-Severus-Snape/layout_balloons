@@ -487,9 +487,10 @@ body {
 
 /* ============================== section_3 ============================== */
 
-/* .section-tour {
-  padding-top: 21rem;
-} */
+.section-tour {
+  /* padding-top: 21rem; */
+  padding-bottom: 8.5rem;
+}
 
 .card-tour {
   position: relative;
@@ -631,3 +632,84 @@ body {
   font-weight: 500;
   font-size: 6rem;
 }
+
+/* ============================== section_4 ============================== */
+
+.section-feedback {
+  padding: 8rem 0;
+}
+
+.title-second_white {
+  color: var(--color-white);
+}
+
+.feedback-card {
+  width: 82%;
+  margin: 0 auto;
+  padding: 5rem 11rem;
+
+  background: rgba(255, 255, 255, .75);
+  box-shadow: var(--main-shadow);
+
+  transform: skewX(336deg);
+}
+
+/* убираем наклон для всех потомков карточки: */
+.feedback-card > * {
+  transform: skewX(-336deg);
+}
+
+.feedback-card_figure {
+  position: relative;
+
+  width: 17rem;
+  height: 17rem;
+  margin-right: 4rem;
+  border-radius: 9rem;
+
+  background: var(--color-light);
+  
+  float: left;
+
+  /* закругление текста: */
+  -webkit-shape-outside: circle(50% at 50% 50%);
+  -moz-shape-outside: circle(50% at 50% 50%);
+  -o-shape-outside: circle(50% at 50% 50%);
+  -ms-shape-outside: circle(50% at 50% 50%);
+  shape-outside: circle(50% at 50% 50%);
+
+  overflow: hidden;
+}
+
+.feedback-card_image {
+  height: 100%;
+
+  transform: scale(1.2);
+  transition: all .6s;
+}
+
+.feedback-card_name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -25%);
+  opacity: 0;
+  transition: all .6s;
+
+  font-size: 2.4rem;
+  font-weight: 400;
+  letter-spacing: .2rem;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.feedback-card:hover .feedback-card_image {
+  transform: scale(1);
+  filter: blur(.3rem) brightness(70%);
+}
+
+.feedback-card:hover .feedback-card_name {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
