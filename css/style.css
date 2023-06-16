@@ -43,6 +43,10 @@ body {
   margin-bottom: 1rem;
 }
 
+.margin-bottom-20px {
+  margin-bottom: 2rem;
+}
+
 .margin-bottom-25px {
   margin-bottom: 2.5rem;
 }
@@ -130,7 +134,7 @@ body {
 
   /* сокращенная запись background:
   url("")[image] top left[position] / 50px 50px[size] no-repeat[repeat] scroll[attachment] */
-  background: linear-gradient(90deg, rgba(186, 133, 84, .7) 0.03%, rgba(1, 1, 1, .7) 99.94%), url("../images/header-background.jpg") center center / cover no-repeat;
+  background: linear-gradient(90deg, rgba(186, 133, 84, .7), rgba(1, 1, 1, .7)), url("../images/header-background.jpg") center center / cover no-repeat;
 
   /* обрезка снизу -> https://bennettfeely.com/clippy/) */
   clip-path: polygon(0 0, 100% 0, 100% 99%, 0 82%);
@@ -196,12 +200,13 @@ body {
 }
 
 /* стилизация кнопки: */
-.button:link, .button:visited {
+.button, .button:link, .button:visited {
   position: relative;
 
   display: inline-block;
   padding: 1.5rem 4rem;
   border-radius: 5rem;
+  border: none;
 
   font-weight: 500;
   font-size: 2rem;
@@ -319,7 +324,7 @@ body {
   text-transform: uppercase;
 
   /*************** создание градиента текста: ***************/
-  background: linear-gradient(90deg, var(--color-light) 3%, var(--color-dark) 100%);
+  background: linear-gradient(90deg, var(--color-light), var(--color-dark));
 
   /* более развёрнутая версия записи:
   background: #c3956a;
@@ -449,7 +454,7 @@ body {
 .section-adventure {
   padding: 27rem 0;
 
-  background: linear-gradient(91.4deg, rgba(186, 133, 84, .7) 16.34%, rgba(0, 0, 0, .7) 98.8%), url("../images/adventure-background.jpg") center center / cover no-repeat;
+  background: linear-gradient(90deg, rgba(186, 133, 84, .7), rgba(0, 0, 0, .7)), url("../images/adventure-background.jpg") center center / cover no-repeat;
 
   /* обрезка фонового изображения: */
   clip-path: polygon(0 6%, 100% 20.5%, 100% 86.5%, 0 73.5%);
@@ -477,7 +482,7 @@ body {
   font-size: 6rem;
 
   /* градиент для иконочных шрифтов: */
-  background: linear-gradient(90deg, var(--color-light) 3%, var(--color-dark) 100%);
+  background: linear-gradient(90deg, var(--color-light), var(--color-dark));
 
   -webkit-background-clip: text; 
   -moz-background-clip: text;
@@ -557,7 +562,7 @@ body {
 }
 
 .card-tour__span {
-  background: linear-gradient(90deg, var(--color-light) 3.65%, var(--color-dark) 100%);
+  background: linear-gradient(90deg, var(--color-light), var(--color-dark));
 }
 
 .card-tour__span_1 {
@@ -596,7 +601,7 @@ body {
 }
 
 .card-tour__side_back {
-  background: linear-gradient(156.85deg, var(--color-light) 3.65%, var(--color-dark) 100%);
+  background: linear-gradient(157deg, var(--color-light), var(--color-dark));
 
   transform: rotateY(180deg);
 }
@@ -663,7 +668,7 @@ body {
   width: 100%;
   height: 100%;
 
-  background: linear-gradient(90deg, rgba(186, 133, 84, 0.6) 35.94%, rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(90deg, rgba(186, 133, 84, .6), rgba(0, 0, 0, .6));
 }
 
 .title-second_white {
@@ -740,3 +745,137 @@ body {
   opacity: 1;
 }
 
+/* ============================== section_5 ============================== */
+
+.section-booking {
+  padding: 10rem;
+  background: linear-gradient(90deg, var(--color-light), var(--color-dark));
+}
+
+.booking {
+  height: 50rem;
+  border-radius: .5rem;
+
+  /* сайт-генератор градиентов: https://cssgradient.io */
+  background: linear-gradient(107deg, rgba(255, 255, 255, .9) 0%, rgba(255, 255, 255, .9) 55.5%, rgba(186, 133, 84, .6) 55.5%, rgba(161, 79, 3, .6) 100%), url("../images/bg-form.jpg") center center / cover no-repeat;
+
+  box-shadow: var(--main-shadow);
+  overflow: hidden;
+}
+
+/* .booking-form { */
+.form {
+  padding-top: 5rem;
+  padding-left: 5rem;
+  width: 60%;
+}
+
+.title-second_left {
+  text-align: left;
+}
+
+.form__input {
+  width: 56%;
+  padding: 1.8rem 2.2rem;
+  border: none;
+  border-radius: .3rem;
+  border-bottom: .2rem solid transparent;
+
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: .2rem;
+}
+
+.form__input:focus {
+  outline: none;
+  border-bottom: .2rem solid #66D763;
+
+  box-shadow: var(--main-shadow);
+}
+
+.form__input:focus:invalid {
+  border-bottom: .2rem solid #D76363;
+}
+
+.form__label {
+  display: block;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: .2rem;
+  color: var(--color-text);
+
+  transition: all .3s;
+}
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  
+  transform: translateY(-2rem);
+}
+
+.form__group-radio {
+  /* width: 40%; */
+  display: inline-block;
+}
+
+/* нужно ли здесь доступное скрытие??? */
+.form__input-radio {
+  display: none;
+}
+
+.form__label-radio {
+  position: relative;
+
+  padding: 4rem 2rem 4rem 4rem;
+
+  cursor: pointer;
+}
+
+.form__button-radio {
+  position: absolute;
+  /* top: -.4rem; */
+  top: 3.5rem;
+  left: 0;
+
+  display: block;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  border: .5rem solid var(--color-dark);
+}
+
+.form__button-radio::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  content: "";
+  display: block;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  background: var(--color-dark);
+
+  opacity: 0;
+
+  transition: all .2s;
+}
+
+.form__input-radio:checked ~ .form__label-radio .form__button-radio::after {
+  opacity: 1;
+}
+
+.button_color, .button_color:link, .button_color:visited {
+  color: var(--color-white);
+  background-color: var(--color-dark);
+}
+
+/* изменение псевдоэлемента при наведении: */
+.button:hover::after {
+  background-color: var(--color-dark);
+}
