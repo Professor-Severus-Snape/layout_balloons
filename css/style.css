@@ -879,3 +879,47 @@ body {
 .button:hover::after {
   background-color: var(--color-dark);
 }
+
+/* ============================== footer ============================== */
+
+.footer {
+  padding: 8rem;
+  background: #333;
+}
+
+.footer__logo {
+  width: 12rem;
+}
+
+.footer__list {
+  text-align: center;
+  list-style-type: none;
+}
+
+.footer__item {
+  display: inline-block;
+}
+
+.footer__item:not(:last-child) {
+  margin-right: 5rem;
+}
+
+.footer__link,  .footer__link:link, .footer__link:visited {
+  display: inline-block;
+
+  color: var(--color-white);
+  text-decoration: none;
+
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: .2rem;
+
+  transition: all .3s;
+}
+
+.footer__link:hover {
+  color: var(--color-dark);
+  text-shadow: var(--main-shadow);
+  transform: rotate(5deg) scale(1.2);
+}
