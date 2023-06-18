@@ -17,6 +17,38 @@
     <!-- нужен ли вообще здесь контейнер??? -->
     <div class="container">
 
+      <!-- меню-гамбургер: -->
+      <div class="navigation">
+        
+        <input class="navigation__toogle" type="checkbox" id="navi">
+        <label class="navigation__button" for="navi">
+          <span class="navigation__icon"></span>
+        </label>
+
+        <div class="navigation__background"></div>
+
+        <nav class="navigation__nav">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a class="navigation__link" href="#">О нас</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="#">Скидки</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="#">Лучшие туры</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="#">Калькулятор цены</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="#">Связаться с нами</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+
       <header class="header">
         <!-- почему не отображается alt??? -->
         <img class="header__logo" src="svg/logo.svg" alt="Логотип воздушный шар">
@@ -319,13 +351,14 @@
 
       <footer class="footer">
 
-        <div class="row text-align-center">
-          <a href="#">
-            <img class="footer__logo" src="svg/logo.svg" alt="Логотип воздушный шар">
+        <!-- <div class="row text-align-center"> -->
+        <!-- <div class="text-align-center margin-bottom-50px"> -->
+          <a class="footer__logo-link" href="#">
+            <img class="footer__logo-img" src="svg/logo.svg" alt="Логотип воздушный шар">
           </a>
-        </div>
+        <!-- </div> -->
 
-        <div class="row">
+        <!-- <div class="row"> -->
           <ul class="footer__list">
             <li class="footer__item">
               <a href="#" class="footer__link">О нас</a>
@@ -343,7 +376,7 @@
               <a href="#" class="footer__link">Связаться с нами</a>
             </li>
           </ul>
-        </div>
+        <!-- </div> -->
         
       </footer>
 

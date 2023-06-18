@@ -1,6 +1,5 @@
 /* объявление глобальных переменных: */
 :root { 
-  --color-white: #fff;
   --color-text: #777;
   --color-light: #BA8554;
   --color-dark: #A14F03;
@@ -27,7 +26,7 @@ body {
   font-size: 1.6rem;
   letter-spacing: .2rem;
   color: var(--color-text);
-  /* background-color: var(--color-white);    <- нужно ли??? */
+  /* background-color: #fff;    <- нужно ли??? */
 }
 
 .container {
@@ -126,6 +125,165 @@ body {
 }
 */
 
+/* ============================== навигационное меню ============================== */
+
+.navigation__toogle {
+  display: none;  /* убираем изначальный чекбокс */
+}
+
+.navigation__button {
+  position: fixed;
+  top: 10rem;
+  right: 10rem;
+  z-index: 3;
+
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  text-align: center;
+
+  cursor: pointer;
+  background: #fff;
+}
+
+.navigation__icon {
+  position: relative;
+  margin-top: 35px;
+}
+
+.navigation__icon, .navigation__icon::before, .navigation__icon::after {
+  display: inline-block;
+  width: 30px;
+  height: 2px;
+
+  background: #000;
+}
+
+.navigation__icon::before, .navigation__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+
+  transition: all .2s;
+}
+
+.navigation__icon::before {
+  top: -8px;
+}
+
+.navigation__icon::after {
+  top: 8px;
+}
+
+.navigation__background {
+  position: fixed;
+  top: 10rem;
+  right: 10rem;
+  z-index: 1;
+
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  background: radial-gradient(var(--color-light), var(--color-dark));
+
+  /* transform: scale(80); */
+  transition: all .6s;
+}
+
+.navigation__nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+
+  height: 100vh;  /* 100% высоты любого монитора */
+  /* width: 100%; */
+  width: 0;
+
+  opacity: 0;
+
+  /* сайт: https://easings.net -> 'easeInOutBack' : */
+  transition: all .6s cubic-bezier(.68, -.6, .32, 1.6);
+}
+
+.navigation__list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 100%;
+
+  list-style-type: none;
+}
+
+.navigation__item {
+  /* можно наверно воспользоваться готовой утилитой.. */
+  text-align: center;
+}
+
+.navigation__item:not(:last-child) {
+  margin-bottom: 5rem;
+}
+
+/* наверно лучше все перенести в item... */
+/* .navigation__link:link, .navigation__link:visited { */
+.navigation__link {
+  display: inline-block;
+
+  color: #fff;
+  text-decoration: none;
+
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: .5rem;
+
+  background: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
+  background-size: 220%;
+
+  padding: 1rem 2rem;
+
+  transition: all .4s;
+}
+
+.navigation__link:hover, .navigation__link:active {
+  color: var(--color-dark);
+  background-position: 100%;
+
+  transform: translateX(1rem);
+}
+
+.navigation__toogle:checked ~ .navigation__background {
+  transform: scale(80);
+}
+
+.navigation__toogle:checked ~ .navigation__nav {
+  width: 100%;
+  opacity: 1;
+}
+
+.navigation__button:hover .navigation__icon::before {
+  top: -10px;
+}
+
+.navigation__button:hover .navigation__icon::after {
+  top: 10px;
+}
+
+.navigation__toogle:checked + .navigation__button .navigation__icon {
+  background: transparent;
+}
+
+.navigation__toogle:checked + .navigation__button .navigation__icon::before {
+  top: 0;
+  transform: rotate(135deg);
+}
+
+.navigation__toogle:checked + .navigation__button .navigation__icon::after {
+  top: 0;
+  transform: rotate(-135deg);
+}
+
 /* ============================== блок header ============================== */
 
 .header {
@@ -161,7 +319,7 @@ body {
 }
 
 .title-first {
-  color: var(--color-white);
+  color: #fff;
 }
 
 .title-first__primary {
@@ -199,8 +357,8 @@ body {
   backface-visibility: hidden;
 }
 
-/* стилизация кнопки: */
-.button, .button:link, .button:visited {
+/* .button, .button:link, .button:visited { */
+.button {
   position: relative;
 
   display: inline-block;
@@ -215,7 +373,7 @@ body {
   text-decoration: none;
   color: var(--color-text);
 
-  background-color: var(--color-white);
+  background-color: #fff;
 
   /* чтобы кнопка сдвигалась плавно (all - объект действия; .3s - время действия): */
   transition: all .3s;
@@ -251,7 +409,7 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 5rem;
-  background-color: var(--color-white);
+  background-color: #fff;
 
   transition: all .4s;
 }
@@ -379,7 +537,8 @@ body {
 }
 
 /* стилизация кнопки: */
-.button-text:link, .button-text:visited {
+/* .button-text, .button-text:link, .button-text:visited { */
+.button-text {
   display: inline-block;
   padding: 1.1rem;
   border-bottom: .1rem solid var(--color-light);
@@ -396,7 +555,7 @@ body {
 
 /* наведение на кнопку: */
 .button-text:hover {
-  color: var(--color-white);
+  color: #fff;
   background-color: var(--color-light);
   box-shadow: var(--main-shadow);
 
@@ -464,7 +623,7 @@ body {
   padding: 2.5rem;
   text-align: center;
   
-  background-color: var(--color-white);
+  background-color: #fff;
   opacity: .8;
 
   border-radius: .5rem;
@@ -558,7 +717,7 @@ body {
   letter-spacing: .2rem;
   text-transform: uppercase;
   text-align: right;
-  color: var(--color-white);
+  color: #fff;
 }
 
 .card-tour__span {
@@ -628,7 +787,7 @@ body {
 
   text-transform: uppercase;
   letter-spacing: .2rem;
-  color: var(--color-white);
+  color: #fff;
 }
 
 .card-tour__text_1 {
@@ -672,7 +831,7 @@ body {
 }
 
 .title-second_white {
-  color: var(--color-white);
+  color: #fff;
 }
 
 .feedback-card {
@@ -732,7 +891,7 @@ body {
   font-weight: 400;
   letter-spacing: .2rem;
   text-align: center;
-  color: var(--color-white);
+  color: #fff;
 }
 
 .feedback-card:hover .feedback-card_image {
@@ -870,8 +1029,9 @@ body {
   opacity: 1;
 }
 
-.button_color, .button_color:link, .button_color:visited {
-  color: var(--color-white);
+/* .button_color, .button_color:link, .button_color:visited { */
+.button_color {
+  color: #fff;
   background-color: var(--color-dark);
 }
 
@@ -887,7 +1047,13 @@ body {
   background: #333;
 }
 
-.footer__logo {
+.footer__logo-link {
+  display: block;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.footer__logo-img {
   width: 12rem;
 }
 
@@ -904,10 +1070,11 @@ body {
   margin-right: 5rem;
 }
 
-.footer__link,  .footer__link:link, .footer__link:visited {
+/* .footer__link,  .footer__link:link, .footer__link:visited { */
+  .footer__link {
   display: inline-block;
 
-  color: var(--color-white);
+  color: #fff;
   text-decoration: none;
 
   text-transform: uppercase;
