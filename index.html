@@ -9,40 +9,41 @@
 
     <!-- подключение шрифтов с fonts.google.com: -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- подключение иконочных шрифтов: -->
     <link rel="stylesheet" href="css/icon-fonts.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
 
   <body>
-    <!-- нужен ли вообще здесь контейнер??? -->
+
     <div class="container">
 
       <!-- меню-гамбургер: -->
-      <div class="navigation">
+      <div class="menu">
         
-        <input class="navigation__toogle" type="checkbox" id="navi">
-        <label class="navigation__button" for="navi">
-          <span class="navigation__icon"></span>
+        <input class="menu__toogle visually-hidden" type="checkbox" id="burger">
+        <label class="menu__button" for="burger">
+          <span class="menu__icon"></span>
         </label>
 
-        <div class="navigation__background"></div>
+        <div class="menu__background"></div>
 
-        <nav class="navigation__nav">
-          <ul class="navigation__list">
-            <li class="navigation__item">
-              <a class="navigation__link" href="#">О нас</a>
+        <nav class="menu__nav">
+          <ul class="menu__list">
+            <li class="menu__item">
+              <a class="menu__link" href="#">О нас</a>
             </li>
-            <li class="navigation__item">
-              <a class="navigation__link" href="#">Скидки</a>
+            <li class="menu__item">
+              <a class="menu__link" href="#">Скидки</a>
             </li>
-            <li class="navigation__item">
-              <a class="navigation__link" href="#">Лучшие туры</a>
+            <li class="menu__item">
+              <a class="menu__link" href="#">Лучшие туры</a>
             </li>
-            <li class="navigation__item">
-              <a class="navigation__link" href="#">Калькулятор цены</a>
+            <li class="menu__item">
+              <a class="menu__link" href="#">Калькулятор цены</a>
             </li>
-            <li class="navigation__item">
-              <a class="navigation__link" href="#">Связаться с нами</a>
+            <li class="menu__item">
+              <a class="menu__link" href="#">Связаться с нами</a>
             </li>
           </ul>
         </nav>
@@ -319,7 +320,7 @@
                   <div class="form__group margin-bottom-38px">
 
                     <div class="form__group-radio">
-                      <input class="form__input-radio" type="radio" id="radio-1" name="radio-group">
+                      <input class="form__input-radio visually-hidden" type="radio" id="radio-1" name="radio-group">
                       <label class="form__label-radio" for="radio-1">
                         <span class="form__button-radio"></span>
                         Групповой тур
@@ -327,7 +328,7 @@
                     </div>
 
                     <div class="form__group-radio">
-                      <input class="form__input-radio" type="radio" id="radio-2" name="radio-group">
+                      <input class="form__input-radio visually-hidden" type="radio" id="radio-2" name="radio-group">
                       <label class="form__label-radio" for="radio-2">
                         <span class="form__button-radio"></span>
                         Индивидуальный тур
@@ -385,8 +386,9 @@
 
 </html>
 
-<!-- ============================== разметка float: ============================== 
-<section class="my-grid">
+<!-- =============== разметка float: =============== 
+
+<section class="my-float">
   <div class="row">
     <div class="column-1-of-2">column-1-of-2</div>
     <div class="column-1-of-2">column-1-of-2</div>
@@ -415,4 +417,6 @@
     <div class="column-1-of-4">column-1-of-4</div>
     <div class="column-3-of-4">column-3-of-4</div>
   </div>
-</section> -->
+</section> 
+
+-->

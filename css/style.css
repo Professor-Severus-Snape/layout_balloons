@@ -3,25 +3,30 @@
   --color-text: #777;
   --color-light: #BA8554;
   --color-dark: #A14F03;
-  /* тень: положение по оси X, по оси Y, радиус размытия, цвет: */
+
+  /* тень: положение по оси X, по оси Y, радиус размытия, цвет */
   --main-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
+
+  /* горизонтальный margin для float-сетки:  */
+  --float-gutter: 6rem;
 }
 
 /* reset - сброс браузерных стилей: */
-*, ::before, ::after {
+*, *::before, *::after {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 html {
-  /* чтобы легче было считать rem -> font-size = 10px. Переведём в %, чтобы можно было увеличивать шрифт. */
-  font-size: 62.5%;  /* (10px / 16px * 100% = 62.5%) */
+  /* чтобы легче было считать rem -> font-size = 10px.
+  Переведём в %, чтобы можно было увеличивать шрифт. */
+  font-size: 62.5%;  /* (10px * 100% / 16px = 62.5%) */
 }
 
 body {
   padding: 5rem;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-weight: 400;
   font-size: 1.6rem;
   letter-spacing: .2rem;
@@ -36,7 +41,19 @@ body {
   background-color: #F7F7F7;
 }
 
-/* ============================== утилиты: ============================== */
+/* ========================= утилиты: ========================= */
+
+/* доступное скрытие */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+} 
 
 .margin-bottom-10px {
   margin-bottom: 1rem;
@@ -66,7 +83,7 @@ body {
   text-align: center;
 }
 
-/* ============================== разметка float: ============================== */
+/* ========================= разметка float: ========================= */
 
 .row {
   max-width: 114rem;  /* 1440px - 2 * 150px = 1140px */
@@ -84,207 +101,214 @@ body {
   clear: both;
 }
 
-/* | ^ - начало имени класса | $ - окончание имени класса | * - любое место имени класса | */
+/* 
+  ^ - начало имени класса,
+  $ - окончание имени класса,
+  * - любое место имени класса
+*/
 [class^="column-"] {
   float: left;
 }
 
 [class^="column-"]:not(:last-child) {
-  margin-right: 6rem;
-  /* margin-right: 5.4rem; */
+  margin-right: var(--float-gutter); /* 6rem; */
 }
 
 .column-1-of-2 {
-  width: calc((100% - 6rem) / 2);  /* 6rem - горизонтальный margin */
+  width: calc((100% - var(--float-gutter)) / 2);
 }
 
 .column-1-of-3 {
-  width: calc((100% - 2 * 6rem) / 3);
+  width: calc((100% - 2 * var(--float-gutter)) / 3);
 }
 
-/*
-.column-2-of-3 {
-  width: calc( 2 * ((100% - 2 * 6rem) / 3) + 6rem);
-}
-*/
+/* .column-2-of-3 {
+  width: calc( 2 * ((100% - 2 * var(--float-gutter)) / 3) + var(--float-gutter));
+} */
 
 .column-1-of-4 {
-  width: calc((100% - 3 * 6rem) / 4);
-  /* width: calc((100% - 3 * 5.4rem) / 4); */
+  width: calc((100% - 3 * var(--float-gutter)) / 4);
 }
 
-/*
-.column-2-of-4 {
-  width: calc( 2 * ((100% - 3 * 6rem) / 4) + 6rem);
-}
-*/
+/* .column-2-of-4 {
+  width: calc( 2 * ((100% - 3 * var(--float-gutter)) / 4) + var(--float-gutter));
+} */
 
-/*
-.column-3-of-4 {
-  width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem);
-}
-*/
+/* .column-3-of-4 {
+  width: calc( 3 * ((100% - 3 * var(--float-gutter)) / 4) + 2 * var(--float-gutter));
+} */
 
-/* ============================== навигационное меню ============================== */
+/* ========================= навигационное меню ========================= */
 
-.navigation__toogle {
-  display: none;  /* убираем изначальный чекбокс */
-}
-
-.navigation__button {
+.menu__button {
   position: fixed;
   top: 10rem;
   right: 10rem;
+
+  /* возможно лучше избавиться от `position: fixed;`, 
+  но как при этом оставить его в самом меню и/или убрать вертикальную прокрутку? 
+  куда надо запихнуть `overflow: hidden;`, чтобы это сработало ??? */
+
+  /* position: absolute;
+  top: 5rem;
+  right: 5rem; */
+
   z-index: 3;
 
-  width: 7rem;
-  height: 7rem;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  text-align: center;
 
   cursor: pointer;
   background: #fff;
 }
 
-.navigation__icon {
-  position: relative;
-  margin-top: 35px;
-}
-
-.navigation__icon, .navigation__icon::before, .navigation__icon::after {
-  display: inline-block;
+.menu__icon, .menu__icon::before, .menu__icon::after {
+  /* нужен ли `display: block;` ??? работает почему-то и без него... */
+  display: block;  
   width: 30px;
-  height: 2px;
+  height: 3px;
 
-  background: #000;
+  background: var(--color-text);
 }
 
-.navigation__icon::before, .navigation__icon::after {
+/* выравнивание центральной полоски по центру: */
+.menu__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* выравнивание остальных полосок относительно центральной: */
+.menu__icon::before, .menu__icon::after {
   content: "";
   position: absolute;
-  left: 0;
+  /* left: 0; -> нужно ли ??? */
 
   transition: all .2s;
 }
 
-.navigation__icon::before {
+.menu__icon::before {
   top: -8px;
 }
 
-.navigation__icon::after {
+.menu__icon::after {
   top: 8px;
 }
 
-.navigation__background {
+.menu__button:hover .menu__icon::before {
+  top: -10px;
+}
+
+.menu__button:hover .menu__icon::after {
+  top: 10px;
+}
+
+.menu__toogle:checked + .menu__button .menu__icon {
+  background: transparent;
+}
+
+.menu__toogle:checked + .menu__button .menu__icon::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menu__toogle:checked + .menu__button .menu__icon::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.menu__background {
   position: fixed;
   top: 10rem;
   right: 10rem;
+  /* position: absolute;
+  top: 5rem;
+  right: 5rem; */
+
   z-index: 1;
 
-  width: 7rem;
-  height: 7rem;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: radial-gradient(var(--color-light), var(--color-dark));
 
-  /* transform: scale(80); */
   transition: all .6s;
 }
 
-.navigation__nav {
+.menu__toogle:checked ~ .menu__background {
+  /* увеличим размер фона в 65раз: 70px * 65 = 4550px;
+  что делать, если ширина экрана больше??? (8k = 7680px * 4320px) 
+  получается scale(110) (7680px / 70px = 109.7), но тогда анимация глючит.. */
+  transform: scale(65);
+}
+
+.menu__nav {
   position: fixed;
   top: 0;
   right: 0;
+
   z-index: 2;
 
   height: 100vh;  /* 100% высоты любого монитора */
-  /* width: 100%; */
   width: 0;
-
   opacity: 0;
 
   /* сайт: https://easings.net -> 'easeInOutBack' : */
   transition: all .6s cubic-bezier(.68, -.6, .32, 1.6);
 }
 
-.navigation__list {
+.menu__toogle:checked ~ .menu__nav {
+  width: 100%;
+  opacity: 1;
+}
+
+.menu__list {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   
-  width: 100%;
+  /* нужна ли здесь вообще ширина, если она есть у родителя ??? */
+  /* width: 100%; */
 
-  list-style-type: none;
+  list-style: none;
 }
 
-.navigation__item {
-  /* можно наверно воспользоваться готовой утилитой.. */
-  text-align: center;
-}
-
-.navigation__item:not(:last-child) {
-  margin-bottom: 5rem;
-}
-
-/* наверно лучше все перенести в item... */
-/* .navigation__link:link, .navigation__link:visited { */
-.navigation__link {
-  display: inline-block;
-
-  color: #fff;
-  text-decoration: none;
-
+.menu__item {
   font-size: 4rem;
   text-transform: uppercase;
   letter-spacing: .5rem;
 
-  background: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
-  background-size: 220%;
+  text-align: center;
+}
 
+.menu__item:not(:last-child) {
+  margin-bottom: 5rem;
+}
+
+.menu__link {
+  display: inline-block;
   padding: 1rem 2rem;
+
+  color: #fff;
+  text-decoration: none;
+
+  background: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
+  background-size: 230%;
 
   transition: all .4s;
 }
 
-.navigation__link:hover, .navigation__link:active {
+.menu__link:hover, .menu__link:active {
   color: var(--color-dark);
   background-position: 100%;
 
   transform: translateX(1rem);
 }
 
-.navigation__toogle:checked ~ .navigation__background {
-  transform: scale(80);
-}
-
-.navigation__toogle:checked ~ .navigation__nav {
-  width: 100%;
-  opacity: 1;
-}
-
-.navigation__button:hover .navigation__icon::before {
-  top: -10px;
-}
-
-.navigation__button:hover .navigation__icon::after {
-  top: 10px;
-}
-
-.navigation__toogle:checked + .navigation__button .navigation__icon {
-  background: transparent;
-}
-
-.navigation__toogle:checked + .navigation__button .navigation__icon::before {
-  top: 0;
-  transform: rotate(135deg);
-}
-
-.navigation__toogle:checked + .navigation__button .navigation__icon::after {
-  top: 0;
-  transform: rotate(-135deg);
-}
-
-/* ============================== блок header ============================== */
+/* ========================= блок header ========================= */
 
 .header {
   position: relative;
@@ -467,9 +491,9 @@ body {
   }
 }
 
-/* ============================== блок main ============================== */
+/* ========================= блок main ========================= */
 
-/* ============================== section_1 ============================== */
+/* ========================= section_1 ========================= */
 .section-about {
   padding-top: 8rem;
 }
@@ -608,7 +632,7 @@ body {
   left: 2.4rem;
 }
 
-/* ============================== section_2 ============================== */
+/* ========================= section_2 ========================= */
 
 .section-adventure {
   padding: 27rem 0;
@@ -652,7 +676,7 @@ body {
   color: transparent;
 }
 
-/* ============================== section_3 ============================== */
+/* ========================= section_3 ========================= */
 
 .section-tour {
   /* padding-top: 21rem; */
@@ -800,7 +824,7 @@ body {
   font-size: 6rem;
 }
 
-/* ============================== section_4 ============================== */
+/* ========================= section_4 ========================= */
 
 .section-feedback {
   position: relative;
@@ -904,7 +928,7 @@ body {
   opacity: 1;
 }
 
-/* ============================== section_5 ============================== */
+/* ========================= section_5 ========================= */
 
 .section-booking {
   padding: 10rem;
@@ -981,11 +1005,6 @@ body {
   display: inline-block;
 }
 
-/* нужно ли здесь доступное скрытие??? */
-.form__input-radio {
-  display: none;
-}
-
 .form__label-radio {
   position: relative;
 
@@ -1040,7 +1059,7 @@ body {
   background-color: var(--color-dark);
 }
 
-/* ============================== footer ============================== */
+/* ========================= блок footer ========================= */
 
 .footer {
   padding: 8rem;
