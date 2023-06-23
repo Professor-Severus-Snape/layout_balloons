@@ -142,8 +142,12 @@ body {
 
 /* ========================= навигационное меню ========================= */
 
+.menu__toogle {
+  display: none;
+}
+
 .menu__button {
-  position: absolute; /* у .container есть position-relative */
+  position: absolute;
   top: 5rem;
   right: 5rem;
 
@@ -223,13 +227,13 @@ body {
 }
 
 .menu__nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
 
   z-index: 1;
 
-  height: 100vh;  /* 100% высоты любого монитора */
+  height: 100%;
   width: 0;
   opacity: 0;
 
@@ -238,24 +242,22 @@ body {
 }
 
 .menu__toogle:checked ~ .menu__nav {
-  /* как убрать вертикальную прокрутку??? 
-  куда запихнуть overflow-hidden, чтобы это работало ??? */
   width: 100%;
   opacity: 1;
 }
 
-.menu__toogle:checked ~ .menu__button {
-  position: fixed;
-  top: 10rem;
-  right: 10rem;
-}
+/* (.burger > menu__toogle:checked) ~ .menu__nav {
+  width: 100%;
+  opacity: 1;
+} */
 
 .menu__list {
   position: absolute;
-  top: 50%;
+  /* top: 50%; */
+  top: 44%;  /* (82% + ((99%-82%) / 3)) * 1/2 = 43.83% */
   left: 50%;
   transform: translate(-50%, -50%);
-  
+
   /* нужна ли здесь вообще ширина, если она есть у родителя ??? */
   width: 100%;
 

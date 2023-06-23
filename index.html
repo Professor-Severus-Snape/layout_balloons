@@ -18,13 +18,51 @@
 
     <div class="container">
 
-      <!-- надо ли перемещать меню в header, если оно всё равно вырвано из потока ??? -->
-      <div class="menu">
-        
-        <input class="menu__toogle visually-hidden" type="checkbox" id="burger">
-        <label class="menu__button" for="burger">
-          <span class="menu__icon"></span>
-        </label>
+      <header class="header">
+
+        <!-- почему не отображается alt в safari ??? (в chrome всё ок) -->
+        <a class="header__logo-link" href="/">
+          <img class="header__logo-img" src="svg/logo.svg" alt="Логотип">
+        </a>
+
+        <div class="menu">
+
+          <input class="menu__toogle" type="checkbox" id="burger">
+          <label class="menu__button" for="burger">
+            <span class="menu__icon"></span>
+          </label>
+          
+          <nav class="menu__nav">
+            <ul class="menu__list">
+              <li class="menu__item">
+                <a class="menu__link" href="#0">О нас</a>
+              </li>
+              <li class="menu__item">
+                <a class="menu__link" href="#0">Скидки</a>
+              </li>
+              <li class="menu__item">
+                <a class="menu__link" href="#0">Лучшие туры</a>
+              </li>
+              <li class="menu__item">
+                <a class="menu__link" href="#0">Калькулятор цены</a>
+              </li>
+              <li class="menu__item">
+                <a class="menu__link" href="#0">Связаться с нами</a>
+              </li>
+            </ul>
+          </nav>
+
+        </div>
+
+        <!-- как добавить <div> для бургера (на одном уровне с <nav>),
+        чтобы при выбранном чекбоксе управлять появлением меню ??? -->
+
+        <!-- <div class="burger">
+          <input class="menu__toogle" type="checkbox" id="burger">
+          <label class="menu__button" for="burger">
+            <span class="menu__icon"></span>
+          </label>
+        </div>
 
         <nav class="menu__nav">
           <ul class="menu__list">
@@ -44,16 +82,7 @@
               <a class="menu__link" href="#0">Связаться с нами</a>
             </li>
           </ul>
-        </nav>
-
-      </div>
-
-      <header class="header">
-
-        <!-- почему не отображается alt в safari ??? (в chrome всё ок) -->
-        <a class="header__logo-link" href="/">
-          <img class="header__logo-img" src="svg/logo.svg" alt="Логотип">
-        </a>
+        </nav>  -->
 
         <div class="header__box">
           <h1 class="title-first">
