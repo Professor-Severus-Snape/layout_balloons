@@ -1,19 +1,11 @@
-/* объявление глобальных переменных: */
 :root { 
   --color-text: #777;
   --color-light: #BA8554;
   --color-dark: #A14F03;
-
-  /* тень: положение по оси X, по оси Y, радиус размытия, цвет */
-  --main-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);
-
-  /* горизонтальный margin для float-сетки:  */
-  --float-gutter: 6rem;
+  --main-shadow: 0 .4rem .4rem rgba(0, 0, 0, .25);  /* тень: 0X, 0Y, радиус размытия, цвет */
+  --float-gutter: 6rem;  /* горизонтальный margin для float-сетки */
 }
 
-/* reset - сброс браузерных стилей: */
-/* *, *::before, *::after { */
-/* по идее этого вполне достаточно: */
 * {
   margin: 0;
 	padding: 0;
@@ -28,11 +20,13 @@ html {
 
 body {
   padding: 5rem;
+
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 400;
   font-size: 1.6rem;
   letter-spacing: .2rem;
   color: var(--color-text);
+
   /* background-color: #fff;    <- нужно ли??? */
 }
 
@@ -113,7 +107,7 @@ body {
 }
 
 [class^="column-"]:not(:last-child) {
-  margin-right: var(--float-gutter); /* 6rem; */
+  margin-right: var(--float-gutter);  /* 6rem; */
 }
 
 .column-1-of-2 {
@@ -140,17 +134,45 @@ body {
   width: calc( 3 * ((100% - 3 * var(--float-gutter)) / 4) + 2 * var(--float-gutter));
 } */
 
-/* ========================= навигационное меню ========================= */
+/* ========================= блок header ========================= */
 
-.menu__toogle {
+.header {
+  position: relative;
+  height: 75rem;
+
+  /* background: url("")[image] top left[position] / 50px 50px[size] no-repeat[repeat] scroll[attachment] */
+  background: linear-gradient(90deg, rgba(186, 133, 84, .7), rgba(1, 1, 1, .7)), url("../images/header-background.jpg") center center / cover no-repeat;
+
+  /* обрезка снизу -> https://bennettfeely.com/clippy/) */
+  clip-path: polygon(0 0, 100% 0, 100% 99%, 0 82%);
+}
+
+.header__logo-link {
+  position: absolute;
+  top: 5rem;
+  left: 5rem;
+
+  display: block;
+  width: 20rem;
+
+  /* стилизация alt: */
+  color: #fff;
+  text-decoration: none;
+}
+
+.header__logo-img {
+  width: 5.6rem;
+  height: 7rem;
+}
+
+.burger__toogle {
   display: none;
 }
 
-.menu__button {
+.burger__button {
   position: absolute;
   top: 5rem;
   right: 5rem;
-
   z-index: 2;
 
   /* значения в px, чтобы кнопка не уменьшалась в размерах */
@@ -162,7 +184,7 @@ body {
   background: #fff;
 }
 
-.menu__icon, .menu__icon::before, .menu__icon::after {
+.burger__icon, .burger__icon::before, .burger__icon::after {
   /* нужен ли `display: block;` ??? работает почему-то и без него... */
   display: block;
   width: 30px;
@@ -172,7 +194,7 @@ body {
 }
 
 /* выравнивание центральной полоски по центру: */
-.menu__icon {
+.burger__icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -180,7 +202,7 @@ body {
 }
 
 /* выравнивание остальных полосок относительно центральной: */
-.menu__icon::before, .menu__icon::after {
+.burger__icon::before, .burger__icon::after {
   content: "";
   position: absolute;
   /* left: 0; -> нужно ли ??? */
@@ -188,49 +210,48 @@ body {
   transition: all .2s;
 }
 
-.menu__icon::before {
+.burger__icon::before {
   top: -8px;
 }
 
-.menu__icon::after {
+.burger__icon::after {
   top: 8px;
 }
 
-.menu__button:hover .menu__icon::before {
+.burger__button:hover .burger__icon::before {
   top: -10px;
 }
 
-.menu__button:hover .menu__icon::after {
+.burger__button:hover .burger__icon::after {
   top: 10px;
 }
 
-.menu__toogle:checked + .menu__button .menu__icon {
+.burger__toogle:checked + .burger__button .burger__icon {
   background: transparent;
 }
 
-.menu__toogle:checked + .menu__button .menu__icon::before {
+.burger__toogle:checked + .burger__button .burger__icon::before {
   top: 0;
   transform: rotate(45deg);
 }
 
-.menu__toogle:checked + .menu__button .menu__icon::after {
+.burger__toogle:checked + .burger__button .burger__icon::after {
   top: 0;
   transform: rotate(135deg);
 }
 
-.menu__toogle:checked + .menu__button:hover .menu__icon::before {
+.burger__toogle:checked + .burger__button:hover .burger__icon::before {
   height: 3.5px;
 }
 
-.menu__toogle:checked + .menu__button:hover .menu__icon::after {
+.burger__toogle:checked + .burger__button:hover .burger__icon::after {
   height: 3.5px;
 }
 
-.menu__nav {
+.menu {
   position: absolute;
   top: 0;
   right: 0;
-
   z-index: 1;
 
   height: 100%;
@@ -238,22 +259,17 @@ body {
   opacity: 0;
 
   background: linear-gradient(to bottom right, var(--color-light), var(--color-dark));
+
   transition: all .3s ease-in-out;
 }
 
-.menu__toogle:checked ~ .menu__nav {
+.burger:has(.burger__toogle:checked) ~ .menu {
   width: 100%;
   opacity: 1;
 }
 
-/* (.burger > menu__toogle:checked) ~ .menu__nav {
-  width: 100%;
-  opacity: 1;
-} */
-
 .menu__list {
   position: absolute;
-  /* top: 50%; */
   top: 44%;  /* (82% + ((99%-82%) / 3)) * 1/2 = 43.83% */
   left: 50%;
   transform: translate(-50%, -50%);
@@ -290,46 +306,14 @@ body {
 }
 
 .menu__link:hover, .menu__link:active {
-  color: var(--color-dark);
   background-position: 100%;
+
+  color: var(--color-dark);
 
   transform: translateX(1rem);
 }
 
-/* ========================= блок header ========================= */
-
-.header {
-  position: relative;
-  height: 75rem;
-
-  /* сокращенная запись background:
-  url("")[image] top left[position] / 50px 50px[size] no-repeat[repeat] scroll[attachment] */
-  background: linear-gradient(90deg, rgba(186, 133, 84, .7), rgba(1, 1, 1, .7)), url("../images/header-background.jpg") center center / cover no-repeat;
-
-  /* обрезка снизу -> https://bennettfeely.com/clippy/) */
-  clip-path: polygon(0 0, 100% 0, 100% 99%, 0 82%);
-}
-
-.header__logo-link {
-  position: absolute;
-  top: 5rem;
-  left: 5rem;
-
-  display: block;
-  width: 20rem;
-
-  /* стилизация alt: */
-  color: #fff;
-  text-decoration: none;
-}
-
-.header__logo-img {
-  width: 5.6rem;
-  height: 7rem;
-}
-
 .header__box {
-  /* позиционирование блока по центру (видео #6, ~21:30) */
   position: absolute;
   top: 46.8%;
   left: 50.2%;
@@ -355,12 +339,8 @@ body {
   line-height: 6rem;
   letter-spacing: 1.2rem;
 
-  /* анимация: */
-  animation-name: left_to_right;
-  animation-duration: 1.7s;
-  animation-timing-function: ease;
-  animation-delay: 1s;
-  /* нормализация анимации: */
+  /* animation: [name] [duration] [timing-function] [delay] */
+  animation: left_to_right 1.7s ease 1s;
   backface-visibility: hidden;
 }
 
@@ -372,16 +352,10 @@ body {
   line-height: 4.8rem;
   letter-spacing: .66rem;
   
-  /* анимация: */
-  animation-name: right_to_left;
-  animation-duration: 1.7s;
-  animation-timing-function: ease;
-  animation-delay: 1s;
+  animation: right_to_left 1.7s ease 1s;
   backface-visibility: hidden;
 }
 
-/* нужно ли здесь указывать :link и :visited для ссылок??? */
-/* .button, .button:link, .button:visited { */
 .button {
   position: relative;
 
@@ -402,16 +376,14 @@ body {
 
   cursor: pointer;  /* для тега <button> */
 
-  transition: all .3s;  /* плавность анимации */
+  transition: all .3s;
 }
 
-/* наведение на ссылку-кнопку: */
 .button:hover {
   box-shadow: var(--main-shadow);
   transform: translateY(-.4rem);
 }
 
-/* нажатие на кнопку: */
 .button:active {
   box-shadow: 0 .4rem .4rem rgba(0, 0, 0, .1);
   transform: translateY(-.2rem);
@@ -440,11 +412,9 @@ body {
   transform: scaleX(1.5) scaleY(1.7);
 }
 
-/* модификатор -> только 1-ая кнопка будет выезжать снизу при загрузке страницы: */
 .button_animated {
   padding: 1.5rem 3.8rem;
 
-  /* animation: [name] [duration] [timing-function] [delay] */
   animation: button_to_up .5s ease-out .7s;
   animation-fill-mode: backwards;  /* чтобы кнопка возникала постепенно снизу */
   backface-visibility: hidden;
