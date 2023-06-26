@@ -592,7 +592,7 @@ body {
   transform: scale(.95);
 }
 
-/* ========================= section_2 ========================= */
+/* ========================= section-adventure ========================= */
 
 .section-adventure {
   padding: 27rem 0 22rem;
@@ -603,13 +603,11 @@ body {
 }
 
 .adventure-card {
-  padding: 2.5rem 2rem 4rem;
-  text-align: center;
-  
-  background-color: #fff;
-  opacity: .8;
+  padding: 2.4rem 2rem 4.1rem;
 
+  text-align: center;
   border-radius: .5rem;
+  background-color: rgba(255, 255, 255, .8);
   box-shadow: var(--main-shadow);
 
   transition: all .2s;
@@ -619,11 +617,13 @@ body {
   transform: translateY(-1.5rem) scale(1.05);
 }
 
+/* иконочные шрифты: */
 .adventure-card__icon {
   display: inline-block;
+  margin-bottom: 25px;
+
   font-size: 6rem;
 
-  /* градиент для иконочных шрифтов: */
   background: linear-gradient(90deg, var(--color-light), var(--color-dark));
 
   -webkit-background-clip: text; 
@@ -638,8 +638,7 @@ body {
 .paragraph-adventure {
   font-weight: 400;
   font-size: 1.6rem;
-  /* line-height: 138%; */
-  letter-spacing: .19rem;
+  letter-spacing: .18rem;
 }
 
 /* ========================= section_3 ========================= */
