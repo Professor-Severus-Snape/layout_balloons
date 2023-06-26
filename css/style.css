@@ -71,10 +71,6 @@ body {
   margin-bottom: 5rem;
 }
 
-.margin-bottom-85px {
-  margin-bottom: 8.5rem;
-}
-
 .text-align-center {
   text-align: center;
 }
@@ -467,83 +463,75 @@ body {
 
 /* ========================= блок main ========================= */
 
-/* ========================= section_1 ========================= */
+/* ========================= section-about ========================= */
+
 .section-about {
   padding-top: 8rem;
 }
 
 .title-second {
-  text-align: center;
+  margin-bottom: 8.5rem;
+
   font-weight: 700;
   font-size: 3.6rem;
   letter-spacing: 1.2rem;
   text-transform: uppercase;
+  text-align: center;  
 
-  /*************** создание градиента текста: ***************/
+  /* --------------- создание градиента текста: --------------- */
   background: linear-gradient(90deg, var(--color-light), var(--color-dark));
 
-  /* более развёрнутая версия записи:
-  background: #c3956a;
-  background: linear-gradient(90deg,#c3956a 3%, #a24f03 100%);
-  background: -webkit-linear-gradient(90deg,#c3956a 3%, #a24f03 100%);
-  background: -moz-linear-gradient(90deg,#c3956a 3%, #a24f03 100%);
-  */
-
-  /* т.к. свойство экспериментальное, то в большинстве браузеров работает только с вендерными префиксами! */
-  -webkit-background-clip: text; 
-  -moz-background-clip: text;
-  -o-background-clip: text;
-  -ms-background-clip: text;
+  /* свойство экспериментальное!!! */
+  -webkit-background-clip: text;  /* Safari, Chrome, Opera 15+ */
+  -moz-background-clip: text;     /* Firefox */
+  -o-background-clip: text;       /* Opera 12- */
+  -ms-background-clip: text;      /* Internet Explorer, Microsoft Edge 12–18 */
   background-clip: text;
 
-  /*
-  Основные браузеры используют следующие префиксы:
-  1. -webkit- — Safari, Chrome, Opera 15+ и другие браузеры на основе движка WebKit или Blink.
-  2. -moz- — Firefox и браузеры на движке Gecko.
-  3. -o- — Opera 12 и раньше, на движке Presto.
-  4. -ms- — Internet Explorer и старый Microsoft Edge 12–18.
-  */
-
-  color: transparent;  /* текст делаем прозрачным: */
-  /*********************************************************/
+  color: transparent;
+  /* ------------------------------------------------------------ */
 
   transition: all .4s;
   backface-visibility: hidden;
 }
 
 .title-second:hover {
-  text-shadow: var(--main-shadow);
+  text-shadow: 0 .4rem .4rem rgba(0, 0, 0, .1);
 
-  /* transform: skew(15deg, 2deg) scale(1.1); /* цвет - ломается!!! Почему??? */
-  transform: skew(15deg, 1.5deg) scale(1.1);  /* цвет - меняется!!! Почему??? */
+  /* почему в Safari пропадает цвет заголовка с градиентом ??? */
+  transform: skew(15deg, 2deg) scale(1.1); 
+
+  /* а так в Safari появляются очертания границ блока: */
+  /* transform: skew(15deg, 1.5deg) scale(1.1);  */
 }
 
 .title-third {
+  margin-bottom: 1rem;
+
   font-weight: 700;
   font-size: 2rem;
   letter-spacing: .25rem;
   text-transform: uppercase;
 }
 
-.paragraph {
-  /* width: 90.5%; */  /* чтобы текст переносился по макету */
+.paragraph-about {
+  width: 91%;
+  margin-bottom: 3.8rem;
+
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 138%;
-  letter-spacing: .2rem;
-  /* letter-spacing: .18rem; */  /* чтобы текст переносился по макету */
+  letter-spacing: .19rem;
 }
 
-/* стилизация кнопки: */
-/* .button-text, .button-text:link, .button-text:visited { */
 .button-text {
   display: inline-block;
-  padding: 1.1rem;
+  padding: 1rem 1rem 1.4rem;
   border-bottom: .1rem solid var(--color-light);
 
   font-weight: 700;
   font-size: 1.6rem;
-  letter-spacing: .2rem;
+  letter-spacing: .18rem;
   color: var(--color-light);
   text-decoration: none;
   
@@ -551,27 +539,20 @@ body {
   backface-visibility: hidden;
 }
 
-/* наведение на кнопку: */
 .button-text:hover {
   color: #fff;
   background-color: var(--color-light);
   box-shadow: var(--main-shadow);
 
-  transform: translateY(-.2rem);  /* слегка приподнимается кнопка */
+  transform: translateY(-.2rem);
 }
 
-/* нажатие на кнопку: */
 .button-text:active {
-  transform: translateY(0);  /* кнопка возвращается на место */
+  transform: translateY(0);
 }
 
 .composition {
   position: relative;
-}
-
-/* при наведении на композицию, все элементы, кроме выбранного, уменьшаются */
-.composition:hover .composition__photo:not(:hover) {
-  transform: scale(.95);
 }
 
 .composition__photo {
@@ -582,13 +563,6 @@ body {
   box-shadow: var(--main-shadow);
 
   transition: all .2s;
-}
-
-.composition__photo:hover {
-  outline: 1rem solid var(--color-light);
-  outline-offset: 1rem;
-  transform: scale(1.1);
-  z-index: 2;
 }
 
 .composition__photo_1 {
@@ -606,19 +580,30 @@ body {
   left: 2.4rem;
 }
 
+.composition__photo:hover {
+  outline: 1rem solid var(--color-light);
+  outline-offset: 1rem;
+
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+.composition:hover .composition__photo:not(:hover) {
+  transform: scale(.95);
+}
+
 /* ========================= section_2 ========================= */
 
 .section-adventure {
-  padding: 27rem 0;
+  padding: 27rem 0 22rem;
 
   background: linear-gradient(90deg, rgba(186, 133, 84, .7), rgba(0, 0, 0, .7)), url("../images/adventure-background.jpg") center center / cover no-repeat;
-
-  /* обрезка фонового изображения: */
-  clip-path: polygon(0 6%, 100% 20.5%, 100% 86.5%, 0 73.5%);
+  
+  clip-path: polygon(0% 6.5%, 100% 23.5%, 100% 99.5%, 0 84.5%);
 }
 
 .adventure-card {
-  padding: 2.5rem;
+  padding: 2.5rem 2rem 4rem;
   text-align: center;
   
   background-color: #fff;
@@ -650,10 +635,17 @@ body {
   color: transparent;
 }
 
+.paragraph-adventure {
+  font-weight: 400;
+  font-size: 1.6rem;
+  /* line-height: 138%; */
+  letter-spacing: .19rem;
+}
+
 /* ========================= section_3 ========================= */
 
 .section-tour {
-  /* padding-top: 21rem; */
+  padding-top: 7.8rem;
   padding-bottom: 8.5rem;
 }
 
@@ -902,6 +894,12 @@ body {
   opacity: 1;
 }
 
+.paragraph-feedback {
+  font-weight: 400;
+  font-size: 1.6rem;
+  letter-spacing: .19rem;
+}
+
 /* ========================= section_5 ========================= */
 
 .section-booking {
@@ -927,8 +925,9 @@ body {
   width: 60%;
 }
 
-.title-second_left {
+.title-second_form {
   text-align: left;
+  margin-bottom: 2.5rem;
 }
 
 .form__input {
