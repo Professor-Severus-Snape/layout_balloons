@@ -24,7 +24,7 @@ body {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 400;
   font-size: 1.6rem;
-  letter-spacing: .2rem;
+  letter-spacing: .18rem;
   color: var(--color-text);
 
   /* background-color: #fff;    <- нужно ли??? */
@@ -50,10 +50,6 @@ body {
   clip-path: circle(0);
   overflow: hidden;
 } 
-
-.margin-bottom-10px {
-  margin-bottom: 1rem;
-}
 
 .margin-bottom-20px {
   margin-bottom: 2rem;
@@ -472,7 +468,6 @@ body {
 .title-second {
   margin-bottom: 8.5rem;
 
-  font-weight: 700;
   font-size: 3.6rem;
   letter-spacing: 1.2rem;
   text-transform: uppercase;
@@ -508,7 +503,6 @@ body {
 .title-third {
   margin-bottom: 1rem;
 
-  font-weight: 700;
   font-size: 2rem;
   letter-spacing: .25rem;
   text-transform: uppercase;
@@ -518,10 +512,7 @@ body {
   width: 91%;
   margin-bottom: 3.8rem;
 
-  font-weight: 400;
-  font-size: 1.6rem;
   line-height: 138%;
-  letter-spacing: .19rem;
 }
 
 .button-text {
@@ -530,8 +521,6 @@ body {
   border-bottom: .1rem solid var(--color-light);
 
   font-weight: 700;
-  font-size: 1.6rem;
-  letter-spacing: .18rem;
   color: var(--color-light);
   text-decoration: none;
   
@@ -635,13 +624,7 @@ body {
   color: transparent;
 }
 
-.paragraph-adventure {
-  font-weight: 400;
-  font-size: 1.6rem;
-  letter-spacing: .18rem;
-}
-
-/* ========================= section_3 ========================= */
+/* ========================= section-tour ========================= */
 
 .section-tour {
   padding-top: 7.8rem;
@@ -703,7 +686,6 @@ body {
 
   font-weight: 300;
   font-size: 2.8rem;
-  letter-spacing: .2rem;
   text-transform: uppercase;
   text-align: right;
   color: #fff;
@@ -737,11 +719,8 @@ body {
   text-decoration: underline;
   text-underline-offset: .5rem;
 
-  font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: .19rem;
   text-align: center;
-  /* color: var(--color-text); */
 }
 
 .card-tour__item:not(:last-child) {
@@ -775,13 +754,11 @@ body {
   text-align: center;
 
   text-transform: uppercase;
-  letter-spacing: .2rem;
   color: #fff;
 }
 
 .card-tour__text_1 {
   font-weight: 300;
-  font-size: 1.6rem;
 }
 
 .card-tour__text_2 {
@@ -877,8 +854,6 @@ body {
   transition: all .6s;
 
   font-size: 2.4rem;
-  font-weight: 400;
-  letter-spacing: .2rem;
   text-align: center;
   color: #fff;
 }
@@ -891,12 +866,6 @@ body {
 .feedback-card:hover .feedback-card_name {
   transform: translate(-50%, -50%);
   opacity: 1;
-}
-
-.paragraph-feedback {
-  font-weight: 400;
-  font-size: 1.6rem;
-  letter-spacing: .19rem;
 }
 
 /* ========================= section_5 ========================= */
@@ -937,7 +906,6 @@ body {
   border-bottom: .2rem solid transparent;
 
   font-size: 1.6rem;
-  font-weight: 400;
   letter-spacing: .2rem;
 }
 
@@ -956,11 +924,6 @@ body {
   display: block;
   margin-top: 1rem;
   margin-left: 1.5rem;
-
-  font-size: 1.6rem;
-  font-weight: 400;
-  letter-spacing: .2rem;
-  color: var(--color-text);
 
   transition: all .3s;
 }
@@ -1069,7 +1032,6 @@ body {
   text-decoration: none;
 
   text-transform: uppercase;
-  font-size: 1.6rem;
   font-weight: 300;
   letter-spacing: .28rem;
 
