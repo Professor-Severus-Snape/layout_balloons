@@ -63,14 +63,6 @@ body {
   margin-bottom: 3.8rem;
 }
 
-.margin-bottom-50px {
-  margin-bottom: 5rem;
-}
-
-.text-align-center {
-  text-align: center;
-}
-
 /* ========================= разметка float: ========================= */
 
 .row {
@@ -627,20 +619,24 @@ body {
 /* ========================= section-tour ========================= */
 
 .section-tour {
-  padding-top: 7.8rem;
+  padding-top: 7.7rem;
   padding-bottom: 8.5rem;
+}
+
+.title-second_tour {
+  margin-bottom: 8rem;
 }
 
 .card-tour {
   position: relative;
-  height: 50rem;
+  height: 52rem;
   
-  /* экспериментальное свойство: */
+  /* свойство экспериментальное!!! */
   -webkit-perspective: 150rem;
   -moz-perspective: 150rem;
   -o-perspective: 150rem;
   -ms-perspective: 150rem;
-  perspective: 150rem; /* -> значение на глаз */
+  perspective: 150rem;  /* -> значение на глаз */
 }
 
 .card-tour__side {
@@ -648,7 +644,7 @@ body {
   top: 0;
   left: 0;
 
-  height: 50rem;
+  height: 52rem;
   width: 100%;
 
   border-radius: .3rem;
@@ -660,22 +656,24 @@ body {
   backface-visibility: hidden;
 }
 
-.card-tour__img {
+.card-tour__image {
   height: 24rem;
-  background: var(--color-light) center center / cover no-repeat;
+  margin-bottom: 5rem;
+
+  background: var(--color-light) center / cover no-repeat;
   background-blend-mode: hard-light;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
 }
 
-.card-tour__img_1 {
+.card-tour__image_1 {
   background-image: url("../images/card-1.jpg");
 }
 
-.card-tour__img_2 {
+.card-tour__image_2 {
   background-image: url("../images/card-2.jpg");
 }
 
-.card-tour__img_3 {
+.card-tour__image_3 {
   background-image: url("../images/card-3.jpg");
 }
 
@@ -687,7 +685,6 @@ body {
   font-weight: 300;
   font-size: 2.8rem;
   text-transform: uppercase;
-  text-align: right;
   color: #fff;
 }
 
@@ -715,11 +712,9 @@ body {
 }
 
 .card-tour__item {
-  /* cтилизация нижнего подчеркивания: */
-  text-decoration: underline;
-  text-underline-offset: .5rem;
-
   font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: .4rem;
   text-align: center;
 }
 
@@ -733,26 +728,17 @@ body {
   transform: rotateY(180deg);
 }
 
-.card-tour:hover .card-tour__side_front {
-  transform: rotateY(-180deg);
-}
-
-.card-tour:hover .card-tour__side_back {
-  transform: rotateY(0deg);
-}
-
 .card-tour__backside-container {
   position: absolute;
   top: 50%;
   left: 50%;
-  
   transform: translate(-50%, -50%);
 }
 
 .card-tour__text {
   margin-bottom: 8rem;
-  text-align: center;
 
+  text-align: center;
   text-transform: uppercase;
   color: #fff;
 }
@@ -764,6 +750,18 @@ body {
 .card-tour__text_2 {
   font-weight: 500;
   font-size: 6rem;
+}
+
+.card-tour:hover .card-tour__side_front {
+  transform: rotateY(-180deg);
+}
+
+.card-tour:hover .card-tour__side_back {
+  transform: rotateY(0);
+}
+
+.tour__button {
+  text-align: center;
 }
 
 /* ========================= section_4 ========================= */
@@ -866,6 +864,10 @@ body {
 .feedback-card:hover .feedback-card_name {
   transform: translate(-50%, -50%);
   opacity: 1;
+}
+
+.feedback__button {
+  text-align: center;
 }
 
 /* ========================= section_5 ========================= */
@@ -1004,6 +1006,7 @@ body {
 .footer__logo-link {
   display: block;
   text-align: center;
+
   margin-bottom: 5rem;
 }
 
