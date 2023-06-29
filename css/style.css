@@ -39,18 +39,6 @@ body {
 
 /* ========================= утилиты: ========================= */
 
-/* доступное скрытие */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  clip-path: circle(0);
-  overflow: hidden;
-} 
-
 .margin-bottom-20px {
   margin-bottom: 2rem;
 }
@@ -583,6 +571,18 @@ body {
   clip-path: polygon(0% 6.5%, 100% 23.5%, 100% 99.5%, 0 84.5%);
 }
 
+/* доступное скрытие */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip-path: circle(0);
+  overflow: hidden;
+} 
+
 .adventure-card {
   padding: 2.4rem 2rem 4.1rem;
 
@@ -764,11 +764,23 @@ body {
   text-align: center;
 }
 
-/* ========================= section_4 ========================= */
+/* ========================= section-feedback ========================= */
 
 .section-feedback {
   position: relative;
-  padding: 8rem 0;
+  padding: 8.1rem 0;
+}
+
+.section-feedback::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+
+  background: linear-gradient(90deg, rgba(186, 133, 84, .6), rgba(0, 0, 0, .6));
 }
 
 .bg-video {
@@ -776,32 +788,21 @@ body {
   top: 0;
   left: 0;
   z-index: -2;
+
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-
-  width: 100%;
-  height: 100%;
-}
-
-.bg-gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-
-  width: 100%;
-  height: 100%;
-
-  background: linear-gradient(90deg, rgba(186, 133, 84, .6), rgba(0, 0, 0, .6));
 }
 
 .title-second_white {
+  margin-bottom: 9.5rem;
   color: #fff;
 }
 
 .feedback-card {
   width: 82%;
   margin: 0 auto;
-  padding: 5rem 11rem;
+  padding: 5rem 11rem 7rem;
 
   background: rgba(255, 255, 255, .75);
   box-shadow: var(--main-shadow);
@@ -819,8 +820,8 @@ body {
 
   width: 17rem;
   height: 17rem;
-  margin-right: 4rem;
-  border-radius: 9rem;
+  margin-right: 5rem;
+  border-radius: 50%;
 
   background: var(--color-light);
   
@@ -836,11 +837,16 @@ body {
   overflow: hidden;
 }
 
-.feedback-card_image {
+.feedback-card_img {
   height: 100%;
 
   transform: scale(1.2);
   transition: all .6s;
+}
+
+.feedback-card:hover .feedback-card_img {
+  transform: scale(1);
+  filter: blur(.3rem) brightness(70%);
 }
 
 .feedback-card_name {
@@ -848,6 +854,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -25%);
+
   opacity: 0;
   transition: all .6s;
 
@@ -856,21 +863,17 @@ body {
   color: #fff;
 }
 
-.feedback-card:hover .feedback-card_image {
-  transform: scale(1);
-  filter: blur(.3rem) brightness(70%);
-}
-
 .feedback-card:hover .feedback-card_name {
   transform: translate(-50%, -50%);
   opacity: 1;
 }
 
 .feedback__button {
+  margin-top: 9.4rem;
   text-align: center;
 }
 
-/* ========================= section_5 ========================= */
+/* ========================= section-booking ========================= */
 
 .section-booking {
   padding: 10rem;
