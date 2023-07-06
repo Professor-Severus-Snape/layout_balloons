@@ -121,7 +121,7 @@
         </section>
 
         <section class="section-tour">
-          <h2 class="title-second title-second_tour">наиболее популярные туры</h2>
+          <h2 class="title-second title-second_tour">Наиболее популярные туры</h2>
           <div class="row">
             <div class="column-1-of-3">
               <div class="card-tour">
@@ -217,7 +217,7 @@
             <source src="video/coverr-balloons.mp4">
             <source src="video/coverr-balloons.webm">
           </video>
-          <h2 class="title-second title-second_white">отзывы наших клиентов</h2>
+          <h2 class="title-second title-second_white">Отзывы наших клиентов</h2>
           <div class="row">
             <div class="feedback-card">
               <figure class="feedback-card_figure">
@@ -249,25 +249,24 @@
 
         <section class="section-booking">
           <!-- наверно можно избавиться от row -->
-          <div class="row">
+          <!-- <div class="row"> -->
             <div class="booking">
-              <!-- <div class="booking-form"> -->
-
-                <form class="form">
+                <form class="form" action="#0">
 
                   <h2 class="title-second title-second_form">Забронировать тур</h2>
 
-                  <div class="form__group margin-bottom-20px">
+                  <!-- нужен ли вообще общий класс form__group (4 шт) ??? -->
+                  <div class="form__group form__group_name">
                     <input class="form__input" type="text" id="name" placeholder="Имя Фамилия" required>
                     <label class="form__label" for="name">Имя и фамилия</label>
                   </div>
 
-                  <div class="form__group margin-bottom-25px">
+                  <div class="form__group form__group_email">
                     <input class="form__input" type="email" id="email" placeholder="Ваш email" required>
                     <label class="form__label" for="email">Почтовый адрес</label>
                   </div>
 
-                  <div class="form__group margin-bottom-38px">
+                  <div class="form__group form__group_radios">
 
                     <div class="form__group-radio">
                       <input class="form__input-radio visually-hidden" type="radio" id="radio-1" name="radio-group" required>
@@ -292,11 +291,8 @@
                   </div>
 
                 </form>
-
-              <!-- </div> -->
-
             </div>
-          </div>
+          <!-- </div> -->
         </section>
       </main>
 

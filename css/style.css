@@ -21,7 +21,7 @@ html {
 body {
   padding: 5rem;
 
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: "Roboto", "Arial", sans-serif;
   font-weight: 400;
   font-size: 1.6rem;
   letter-spacing: .18rem;
@@ -35,20 +35,6 @@ body {
   z-index: 0;
 
   background-color: #F7F7F7;
-}
-
-/* ========================= утилиты: ========================= */
-
-.margin-bottom-20px {
-  margin-bottom: 2rem;
-}
-
-.margin-bottom-25px {
-  margin-bottom: 2.5rem;
-}
-
-.margin-bottom-38px {
-  margin-bottom: 3.8rem;
 }
 
 /* ========================= разметка float: ========================= */
@@ -881,37 +867,59 @@ body {
 }
 
 .booking {
-  height: 50rem;
+  min-height: 50rem;
   border-radius: .5rem;
 
-  /* сайт-генератор градиентов: https://cssgradient.io */
-  background: linear-gradient(107deg, rgba(255, 255, 255, .9) 0%, rgba(255, 255, 255, .9) 55.5%, rgba(186, 133, 84, .6) 55.5%, rgba(161, 79, 3, .6) 100%), url("../images/bg-form.jpg") center center / cover no-repeat;
+  /* генератор градиентов: https://cssgradient.io */
+  background: linear-gradient(107deg, rgba(255, 255, 255, .9) 0%, rgba(255, 255, 255, .9) 55.5%, rgba(255, 255, 255, 0) 55.5%, rgba(255, 255, 255, 0) 100%), url("../images/bg-form.jpg") center center / cover no-repeat;
 
   box-shadow: var(--main-shadow);
-  overflow: hidden;
+  /* overflow: hidden; */    /* по идее не влияет на скругление.. */
 }
 
-/* .booking-form { */
 .form {
-  padding-top: 5rem;
+  padding: 5rem 45rem 5.3rem 5.1rem;
+
+  /* padding-top: 5rem;
   padding-left: 5rem;
-  width: 60%;
+  width: 60%; */
 }
 
 .title-second_form {
+  margin-bottom: 3rem;
   text-align: left;
+  letter-spacing: 1.1rem;
+}
+
+.form__group_name {
+  margin-bottom: 2rem;
+}
+
+.form__group_email {
   margin-bottom: 2.5rem;
 }
 
+.form__group_radios {
+  margin-bottom: 3.7rem;
+}
+
 .form__input {
-  width: 56%;
-  padding: 1.8rem 2.2rem;
+  width: 55%;
+  padding: 1.9rem 2.2rem 1.5rem;
   border: none;
   border-radius: .3rem;
   border-bottom: .2rem solid transparent;
 
   font-size: 1.6rem;
   letter-spacing: .2rem;
+}
+
+.form__label {
+  display: block;
+  margin-top: 1.1rem;
+  margin-left: 1.5rem;
+
+  transition: all .3s;
 }
 
 .form__input:focus {
@@ -925,14 +933,6 @@ body {
   border-bottom: .2rem solid #D76363;
 }
 
-.form__label {
-  display: block;
-  margin-top: 1rem;
-  margin-left: 1.5rem;
-
-  transition: all .3s;
-}
-
 .form__input:placeholder-shown + .form__label {
   opacity: 0;
   visibility: hidden;
@@ -943,27 +943,27 @@ body {
 .form__group-radio {
   /* width: 40%; */
   display: inline-block;
+  margin-right: 1.8rem;
 }
 
 .form__label-radio {
   position: relative;
 
-  padding: 4rem 2rem 4rem 4rem;
+  padding-left: 4.1rem;
 
   cursor: pointer;
 }
 
 .form__button-radio {
   position: absolute;
-  /* top: -.4rem; */
-  top: 3.5rem;
+  top: -.4rem;
   left: 0;
 
   display: block;
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
-  border: .5rem solid var(--color-dark);
+  border: .5rem solid var(--color-light);
 }
 
 .form__button-radio::after {
@@ -977,26 +977,26 @@ body {
   height: 1.5rem;
   width: 1.5rem;
   border-radius: 50%;
-  background: var(--color-dark);
+  background: var(--color-light);
 
   opacity: 0;
 
   transition: all .2s;
 }
 
-.form__input-radio:checked ~ .form__label-radio .form__button-radio::after {
+.form__input-radio:checked + .form__label-radio .form__button-radio::after {
   opacity: 1;
 }
 
-/* .button_color, .button_color:link, .button_color:visited { */
 .button_color {
+  padding: 1.5rem;
+
   color: #fff;
-  background-color: var(--color-dark);
+  background-color: var(--color-light);
 }
 
-/* изменение псевдоэлемента при наведении: */
-.button:hover::after {
-  background-color: var(--color-dark);
+.button_color:hover::after {
+  background-color: var(--color-light);
 }
 
 /* ========================= блок footer ========================= */
