@@ -27,10 +27,7 @@ body {
   letter-spacing: .18rem;
   color: var(--color-text);
 
-  /* background-color: #fff;    <- нужно ли??? */
-
-  /* убирает горизонтальную прокрутку, возникающую из-за меню! как исправить иначе?? */
-  /* overflow-x: hidden; */
+  background-color: #fff;
 }
 
 .container {
@@ -146,7 +143,6 @@ body {
 }
 
 .burger__icon, .burger__icon::before, .burger__icon::after {
-  /* нужен ли `display: block;` ??? работает почему-то и без него... */
   display: block;
   width: 30px;
   height: 3px;
@@ -166,7 +162,7 @@ body {
 .burger__icon::before, .burger__icon::after {
   content: "";
   position: absolute;
-  /* left: 0; -> нужно ли ??? */
+  left: 0;
 
   transition: all .2s;
 }
@@ -216,12 +212,8 @@ body {
   z-index: 1;
 
   height: 100%;
-/* появляется горизонтальная прокрутка!!! */
-  /* width: 0;  */
-
-/* исчезает анимация + появляется курсор на меню + видно меню при перезагрузке!!! */
-  /* width: 100%;  */
-
+  width: 0;  /* появляется горизонтальная прокрутка!!! */
+  overflow-x: hidden;  /* убираем горизонтальную прокрутку!!! */
   /* opacity: 0; */
 
   background: linear-gradient(to bottom right, var(--color-light), var(--color-dark));
@@ -229,10 +221,16 @@ body {
   transition: all .3s ease-in-out;
 }
 
-.burger:has(.burger__toogle:checked) ~ .menu {
+.burger__toogle:checked ~ .menu {
   width: 100%;
   /* opacity: 1; */
 }
+
+/* :has() не работает в mozilla firefox!!! */
+/* .burger:has(.burger__toogle:checked) ~ .menu {
+  width: 100%;
+  opacity: 1;
+} */
 
 .menu__list {
   position: absolute;
@@ -240,7 +238,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  /* нужна ли здесь вообще ширина, если она есть у родителя ??? */
   width: 100%;
 
   list-style: none;
@@ -306,7 +303,7 @@ body {
   letter-spacing: 1.2rem;
 
   /* animation: [name] [duration] [timing-function] [delay] */
-  animation: left_to_right 1.7s ease 1s;
+  animation: left-to-right 1.7s ease 1s;
   backface-visibility: hidden;
 }
 
@@ -318,7 +315,7 @@ body {
   line-height: 4.8rem;
   letter-spacing: .66rem;
   
-  animation: right_to_left 1.7s ease 1s;
+  animation: right-to-left 1.7s ease 1s;
   backface-visibility: hidden;
 }
 
@@ -381,13 +378,12 @@ body {
 .button_animated {
   padding: 1.5rem 3.8rem;
 
-  animation: button_to_up .5s ease-out .7s;
+  animation: button-to-up .5s ease-out .7s;
   animation-fill-mode: backwards;  /* чтобы кнопка возникала постепенно снизу */
   backface-visibility: hidden;
 }
 
-/* где расположить keyframes - в начале / в конце файла .css или где угодно ???  */
-@keyframes button_to_up {
+@keyframes button-to-up {
   from {
     opacity: 0;
     transform: translateY(5rem);
@@ -399,7 +395,7 @@ body {
   }
 }
 
-@keyframes left_to_right {
+@keyframes left-to-right {
   from {
     opacity: 0;
     transform: translateX(-10rem);
@@ -415,7 +411,7 @@ body {
   }
 }
 
-@keyframes right_to_left {
+@keyframes right-to-left {
   from {
     opacity: 0;
     transform: translateX(10rem);
@@ -449,14 +445,8 @@ body {
 
   /* --------------- создание градиента текста: --------------- */
   background: linear-gradient(90deg, var(--color-light), var(--color-dark));
-
-  /* свойство экспериментальное!!! */
-  -webkit-background-clip: text;  /* Safari, Chrome, Opera 15+ */
-  -moz-background-clip: text;     /* Firefox */
-  -o-background-clip: text;       /* Opera 12- */
-  -ms-background-clip: text;      /* Internet Explorer, Microsoft Edge 12–18 */
+  -webkit-background-clip: text;
   background-clip: text;
-
   color: transparent;
   /* ------------------------------------------------------------ */
 
@@ -468,10 +458,11 @@ body {
   text-shadow: 0 .4rem .4rem rgba(0, 0, 0, .1);
 
   /* почему в Safari пропадает цвет заголовка с градиентом ??? */
+  /* в Chrome и в Firefox все ок! */
   transform: skew(15deg, 2deg) scale(1.1); 
 
   /* а так в Safari появляются очертания границ блока: */
-  /* transform: skew(15deg, 1.5deg) scale(1.1);  */
+  transform: skew(15deg, 1.5deg) scale(1.1); 
 }
 
 .title-third {
@@ -565,7 +556,6 @@ body {
   clip-path: polygon(0% 6.5%, 100% 23.5%, 100% 99.5%, 0 84.5%);
 }
 
-/* доступное скрытие */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -600,13 +590,8 @@ body {
   font-size: 6rem;
 
   background: linear-gradient(90deg, var(--color-light), var(--color-dark));
-
   -webkit-background-clip: text; 
-  -moz-background-clip: text;
-  -o-background-clip: text;
-  -ms-background-clip: text;
   background-clip: text;
-
   color: transparent;
 }
 
@@ -625,12 +610,8 @@ body {
   position: relative;
   height: 52rem;
   
-  /* свойство экспериментальное!!! */
   -webkit-perspective: 150rem;
-  -moz-perspective: 150rem;
-  -o-perspective: 150rem;
-  -ms-perspective: 150rem;
-  perspective: 150rem;  /* -> значение на глаз */
+  perspective: 150rem;  /* <- значение на глаз */
 }
 
 .card-tour__side {
@@ -822,11 +803,7 @@ body {
   float: left;
 
   /* закругление текста: */
-  -webkit-shape-outside: circle(50% at 50% 50%);
-  -moz-shape-outside: circle(50% at 50% 50%);
-  -o-shape-outside: circle(50% at 50% 50%);
-  -ms-shape-outside: circle(50% at 50% 50%);
-  shape-outside: circle(50% at 50% 50%);
+  shape-outside: circle(50% at 50% 50%);  /* NB! старый валидатор выдает ошибку! */
 
   overflow: hidden;
 }
@@ -882,15 +859,10 @@ body {
   background: linear-gradient(107deg, rgba(255, 255, 255, .9) 0%, rgba(255, 255, 255, .9) 55.5%, rgba(255, 255, 255, 0) 55.5%, rgba(255, 255, 255, 0) 100%), url("../images/bg-form.jpg") center center / cover no-repeat;
 
   box-shadow: var(--main-shadow);
-  /* overflow: hidden; */    /* по идее не влияет на скругление.. */
 }
 
 .form {
   padding: 5rem 45rem 5.3rem 5.1rem;
-
-  /* padding-top: 5rem;
-  padding-left: 5rem;
-  width: 60%; */
 }
 
 .title-second_form {
@@ -949,7 +921,6 @@ body {
 }
 
 .form__group-radio {
-  /* width: 40%; */
   display: inline-block;
   margin-right: 1.8rem;
 }

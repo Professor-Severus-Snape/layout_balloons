@@ -20,18 +20,17 @@
 
       <header class="header">
 
-        <!-- почему не отображается alt в safari ??? (в chrome всё ок) -->
+        <!-- почему не отображается alt в safari ??? (в chrome и firefox всё ок) -->
         <a class="header__logo-link" href="/">
           <img class="header__logo-img" src="svg/logo.svg" alt="Логотип">
         </a>
 
-        <div class="burger">
-          <!-- autocomplete="off" решает проблему с :checked в firefox (сброс значений полей на дефолтные) -->
-          <input class="burger__toogle" type="checkbox" id="burger" autocomplete="off">
-          <label class="burger__button" for="burger">
-            <span class="burger__icon"></span>
-          </label>
-        </div>
+        <!-- <div class="burger"> -->
+        <input class="burger__toogle" type="checkbox" id="burger">
+        <label class="burger__button" for="burger">
+          <span class="burger__icon"></span>
+        </label>
+        <!-- </div> -->
 
         <nav class="menu">
           <ul class="menu__list">
