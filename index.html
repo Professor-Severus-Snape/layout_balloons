@@ -4,8 +4,8 @@
   <head>
     <title>Balloons</title>
     <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- подключение шрифтов с fonts.google.com: -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -77,9 +77,34 @@
             </div>
             <div class="column-1-of-2">
               <div class="composition">
-                <img class="composition__photo composition__photo_1" src="images/photo-balloons-1.png" alt="photo-balloons-1">
-                <img class="composition__photo composition__photo_2" src="images/photo-balloons-2.png" alt="photo-balloons-2">
-                <img class="composition__photo composition__photo_3" src="images/photo-balloons-3.png" alt="photo-balloons-3">
+
+                <img class="composition__photo composition__photo_1" 
+                    src="images/photo-balloons-1.png" 
+                    srcset="images/photo-balloons-1.png 954w, 
+                            images/photo-balloons-1-small.png 318w" 
+                    sizes="(max-width: 1240px) 23vw, 
+                            (max-width: 900px) 43vw, 
+                            (max-width: 600px) 47vw, 300px" 
+                    alt="photo-balloons-1">
+
+                <img class="composition__photo composition__photo_2" 
+                    src="images/photo-balloons-2.png" 
+                    srcset="images/photo-balloons-2.png 954w, 
+                            images/photo-balloons-2-small.png 318w" 
+                    sizes="(max-width: 1240px) 23vw, 
+                            (max-width: 900px) 43vw, 
+                            (max-width: 600px) 47vw, 300px" 
+                    alt="photo-balloons-2">
+                      
+                <img class="composition__photo composition__photo_3" 
+                    src="images/photo-balloons-3.png" 
+                    srcset="images/photo-balloons-3.png 954w, 
+                            images/photo-balloons-3-small.png 318w" 
+                    sizes="(max-width: 1240px) 23vw, 
+                            (max-width: 900px) 43vw, 
+                            (max-width: 600px) 47vw, 300px" 
+                    alt="photo-balloons-3">
+                    
               </div>
             </div>
           </div>
@@ -144,7 +169,7 @@
                   <div class="card-tour__backside-container">
                     <p class="card-tour__text card-tour__text_1">Полная стоимость:</p>
                     <p class="card-tour__text card-tour__text_2">5990₽</p>
-                    <a class="button" href="#0">Забронировать</a>
+                    <a class="button" href="#0">Заказать</a>
                   </div>
                 </div>
               </div>
@@ -171,7 +196,7 @@
                   <div class="card-tour__backside-container">
                     <p class="card-tour__text card-tour__text_1">Полная стоимость:</p>
                     <p class="card-tour__text card-tour__text_2">5990₽</p>
-                    <a class="button" href="#0">Забронировать</a>
+                    <a class="button" href="#0">Заказать</a>
                   </div>
                 </div>
               </div>
@@ -198,7 +223,7 @@
                   <div class="card-tour__backside-container">
                     <p class="card-tour__text card-tour__text_1">Полная стоимость:</p>
                     <p class="card-tour__text card-tour__text_2">5990₽</p>
-                    <a class="button" href="#0">Забронировать</a>
+                    <a class="button" href="#0">Заказать</a>
                   </div>
                 </div>
               </div>
@@ -285,7 +310,7 @@
 
                   </div>
 
-                  <div class="form__group">
+                  <div class="form__group form__group_button">
                     <button class="button button_color">Забронировать</button>
                   </div>
 
